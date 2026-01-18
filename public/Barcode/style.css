@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Tajawal", sans-serif;
+}
+
+main {
+    width: 500px;
+    margin: 40px auto;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+    overflow: hidden;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+main .first {
+    display: flex;
+    flex-direction: column;
+    background-color: #936e71;
+    padding: 20px;
+    color: #fff;
+}
+
+main .first .logo {
+    width: 200px;
+}
+main .first .logo img {
+    width: 100%;
+}
+main .first .one {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+main .first .two .name {
+    font-weight: 600;
+    font-size: 35px;
+    display: block;
+}
+main .first .two .job-title {
+    font-size: 16px;
+    font-weight: 400;
+}
+main .three {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+main .three img {
+    width: 28px;
+}
+main .seconde a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    background-color: #936e71;
+    width: fit-content;
+    margin: 25px auto;
+    padding: 14px 50px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    color: #fff;
+    text-decoration: none;
+}
+main .seconde a img {
+    width: 24px;
+}
+main .third {
+    display: flex;
+    flex-direction: column;
+}
+main .third .box {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    text-decoration: none;
+    border-bottom: 1px solid #936e71;
+    padding: 15px 25px;
+}
+main .third .box:last-child {
+    border: none;
+}
+main .third .box div {
+    display: flex;
+    flex-direction: column;
+}
+main .third .box div .number {
+    color: #936e71;
+    font-weight: 600;
+}
+main .third .box div .phonenumber {
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    main {
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        -ms-border-radius: 0;
+        -o-border-radius: 0;
+}
+    main .first .logo {
+        width: 180px;
+        margin-bottom: 10px;
+    }
+    main .first .two .name {
+        font-size: 40px;
+    }
+    main .first .one{
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    
+}

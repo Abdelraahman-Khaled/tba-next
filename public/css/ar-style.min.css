@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+
+*,
+h5.uptitle,
+.month {
+    font-family: "Tajawal", sans-serif !important;
+    letter-spacing: initial !important;
+}
+#mainmenu > li a {
+    font-size: 16px;
+}
+.de-review-app .d-testi,
+.blog-list .post-text {
+    text-align: right;
+}
+.de-review-app {
+    text-align: right;
+}
+.nav-item {
+    text-align: right;
+}
+.blog-list li {
+    padding-right: 25px;
+    padding-left: 0;
+}
+.blog-list li::before {
+    right: 0;
+    left: initial;
+}
+.accordion-button::after {
+    margin-right: auto;
+    margin-left: initial;
+}
+.contact-info-item .icon-box {
+    margin-left: auto;
+    margin-right: initial;
+}
+.product-content {
+    text-align: right;
+}
+.product-price,
+.product-rating {
+    justify-content: end;
+}
+.about-us-footer {
+    justify-content: flex-end;
+}
+.blog-list .date-box {
+    right: initial;
+    left: 0;
+}
+.front .inner,
+.back .inner {
+    text-align: right;
+}
+.accordion-collapse {
+    text-align: right;
+}
+.accordion-button {
+    flex-direction: row-reverse;
+}
+.contact-us-form .form-control,
+.contact-form-content h3,
+.contact-form-content p,
+.contact-information,
+.contact-form-btn {
+    text-align: right;
+}
+.dropdown-item {
+    text-align: right;
+}
+.social-icons {
+    justify-content: start;
+}
+@media (max-width: 768px) {
+    .contact-info-body .contact-info-box-1 .icon-box,
+    .contact-info-body .contact-info-box-2 .icon-box {
+        margin: 0 15px;
+    }
+    .social-icons {
+        justify-content: center;
+    }
+}
+@media (min-width: 768px) {
+    .navbar-expand-md .navbar-nav {
+        flex-direction: row-reverse;
+    }
+}

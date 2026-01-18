@@ -1,0 +1,50 @@
+server {
+    listen 80;
+    server_name tba.sa www.tba.sa;
+
+    # إعادة التوجيه إلى HTTPS
+    return 301 https://tba.sa$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name tba.sa;
+
+    # مسار ملفات الموقع
+    root /home/username/public_html;
+    index index.html index.php;
+
+    # إعدادات SSL (تعديل حسب شهادتك)
+    ssl_certificate /etc/ssl/tba.sa.crt;
+    ssl_certificate_key /etc/ssl/tba.sa.key;
+
+    # منع عرض فهرس المجلدات
+    autoindex off;
+
+    # ضغط Gzip
+    gzip on;
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss image/svg+xml;
+
+    # التخزين المؤقت (Cache)
+    location ~* \.(jpg|jpeg|png|gif|ico|webp|svg|css|js|woff2?)$ {
+        expires 30d;
+        add_header Cache-Control "public, no-transform";
+    }
+
+    # إعادة توجيه www إلى non-www داخل HTTPS
+    if ($host = www.tba.sa) {
+        return 301 https://tba.sa$request_uri;
+    }
+
+    # معالجة PHP (اختياري)
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php8.2-fpm.sock; # عدّل حسب إصدار PHP عندك
+    }
+
+    # حماية أساسية
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-Content-Type-Options "nosniff";
+    add_header X-XSS-Protection "1; mode=block";
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+}
