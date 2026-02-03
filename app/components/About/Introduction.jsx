@@ -1,45 +1,41 @@
 import React from 'react';
 
-const Introduction = () => {
+const Introduction = ({ t, lang }) => {
+    const isRTL = lang === 'ar';
     return (
         <section>
             <div className="container">
                 <div className="row gx-5 align-items-center">
-                    <div className="col-lg-6 mb-4 mb-md-0">
+                    <div className={`col-lg-6 mb-4 mb-md-0 ${isRTL ? 'order-lg-2' : ''}`}>
                         <div className="row g-4">
                             <div className="col-6">
-                                <img src="images/ourvision.webp" className="img-fluid rounded-20" alt="موردين قهوة في السعودية" />
+                                <img src="/images/ourvision.webp" className="img-fluid rounded-20" alt={t.vision.title} />
                             </div>
                             <div className="col-6">
-                                <img src="images/ourgloas.webp" className="img-fluid rounded-20" alt="حبوب بن مستوردة" />
+                                <img src="/images/ourgloas.webp" className="img-fluid rounded-20" alt={t.mission.title} />
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-6">
-                        <h2>من نحن؟</h2>
+                    <div className={`col-lg-6 ${isRTL ? 'text-end order-lg-1' : ''}`}>
+                        <h2>{t.about.title}</h2>
                         <div className="spacer-half"></div>
-                        <p className="lead" dir="rtl">
-                            <strong>قمة الماركات العربية للتجارة (TBA)</strong> هي شركة سعودية متخصصة في استيراد وتوزيع المواد
-                            الغذائية الفاخرة. منذ تأسيسها، ارتكزت على توفير منتجات غذائية مستوردة ذات جودة عالية بما في ذلك القهوة الفاخرة والشوكولاتة،
-                            بالإضافة إلى مجموعة واسعة من الحلويات والبسكويت والمنتجات العالمية. من خلال شبكة توزيع شاملة تتضمن فروعًا ومستودعات
-                            في مختلف أنحاء المملكة، نحرص دائمًا على تلبية احتياجات السوق السعودي وتقديم أفضل تجربة تسوق لعملائنا.
+                        <p className="lead" dir={isRTL ? 'rtl' : 'ltr'}>
+                            {t.about.description}
                         </p>
 
-                        <h2>رؤيتنا</h2>
-                        <p>
-                            أن نكون الرائدين في توزيع المواد الغذائية الفاخرة في المملكة العربية السعودية، مع التوسع الدولي في قطاع الحلويات
-                            والمنتجات الغذائية الفاخرة.
+                        <h2>{t.vision.title}</h2>
+                        <p dir={isRTL ? 'rtl' : 'ltr'}>
+                            {t.vision.description}
                         </p>
 
-                        <h2>رسالتنا</h2>
-                        <p>
-                            في TBA نلتزم باختيار واستيراد وتوزيع منتجات غذائية ذات جودة عالية تواكب أحدث الاتجاهات في عالم الغذاء. ونسعى من خلال
-                            شراكاتنا الاستراتيجية مع الشركات العالمية الكبرى إلى تعزيز رضا العملاء من خلال ضمان توفر المنتجات الفاخرة في السوق
-                            السعودي بشكل مستمر وبأسعار تنافسية.
+                        <h2>{t.mission.title}</h2>
+                        <p dir={isRTL ? 'rtl' : 'ltr'}>
+                            {t.mission.description}
                         </p>
-                        <h2>قيمنا</h2>
-                        <p>
-                            في قمة الماركات العربية للتجارة، نعمل بتوجيه من قيمنا الراسخة التي تضمن لنا تقديم أفضل المنتجات والخدمات
+
+                        <h2>{t.values.title}</h2>
+                        <p dir={isRTL ? 'rtl' : 'ltr'}>
+                            {t.values.description}
                         </p>
                     </div>
                 </div>

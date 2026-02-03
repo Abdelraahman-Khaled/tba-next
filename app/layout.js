@@ -1,9 +1,10 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Tajawal, Plus_Jakarta_Sans, Marcellus } from "next/font/google"; // Import fonts
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-
-
+import { LanguageProvider } from "./context/LanguageContext";
+import { cookies } from "next/headers";
+import Providers from "./components/QueryClientProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,16 +12,37 @@ const geistSans = Geist({
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+  variable: "--font-mono",
   subsets: ["latin"],
 });
 
+const tajawal = Tajawal({
+  subsets: ["arabic", "latin"],
+  weight: ["200", "300", "400", "500", "700", "800", "900"],
+  variable: "--font-tajawal", // transform to variable to use in css
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  variable: "--font-plus-jakarta-sans",
+});
+
+const marcellus = Marcellus({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-marcellus",
+});
+
 export const metadata = {
-  title: "TBA",
-  description: "TBA شركة متخصصة في استيراد وتوزيع المواد الغذائية الفاخرة",
+  title: "TBA - Top Brands Arabian Trading",
+  description: "Specialized in importing and distributing luxury food products in Saudi Arabia.",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const cookieStore = await cookies();
+  const initialLang = cookieStore.get('language')?.value || 'ar';
+
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <head>
@@ -30,24 +52,21 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" href="/css/colors/cream.min.css" />
         <link rel="stylesheet" href="/css/03_custom.min.css" />
         <link rel="stylesheet" href="/css/ar-style.min.css" />
+
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} dark-scheme`} suppressHydrationWarning>
-        <div id="wrapper" className="position-relative">
-          <div className="shape shape-1"></div>
-          <div className="shape shape-2"></div>
-          <Header />
-            {children}
-          <Footer />
-          <div id="preloader">
-            <div className="preloader1"></div>
-          </div>
-        </div>
-        <div className="progress-wrap">
-          <svg className="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" suppressHydrationWarning />
-          </svg>
-          <img src="/images/arrow-right.webp" alt="قمة الماركات العربية للتجارة (TBA)" />
-        </div>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${tajawal.variable} ${plusJakartaSans.variable} ${marcellus.variable} dark-scheme vw-100`} suppressHydrationWarning>
+        <LanguageProvider initialLang={initialLang}>
+          <Providers>
+            <div id="wrapper" className="position-relative">
+              <Header />
+              {children}
+              <Footer />
+              <div id="preloader">
+                <div className="preloader1"></div>
+              </div>
+            </div>
+          </Providers>
+        </LanguageProvider>
         <script src="/js/plugins.js"></script>
         <script src="/js/designesia.js"></script>
         <script src="/js/swiper-bundle.min.js"></script>

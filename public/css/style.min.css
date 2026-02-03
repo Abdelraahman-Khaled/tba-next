@@ -64,7 +64,8 @@
 
 /* init */
 * {
-	--body-font: "Plus Jakarta Sans";
+	--body-font: "Tajawal", sans-serif;
+	--body-font-en: "Plus Jakarta Sans";
 	--title-font: "Plus Jakarta Sans", Helvetica, Arial, sans-serif;
 	--deco-font-1: "Sacramento";
 	--body-font-color: #707070;
@@ -99,6 +100,10 @@ body {
 	line-height: 1.8em;
 	padding: 0;
 	background: #606060;
+}
+
+[dir =  ltr] {
+	font-family: var(--body-font-en) !important;
 }
 
 body.de_light {

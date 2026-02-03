@@ -21,7 +21,7 @@ const SubHero = ({ title, subtitle, bgImage, breadcrumbs }) => {
     }, [bgImage]); // Reinit when image changes
 
     return (
-        <section id="subheader" className="jarallax text-light" suppressHydrationWarning>
+        <section id="subheader" className="jarallax text-light" suppressHydrationWarning >
             <img src={bgImage} className="jarallax-img" alt={title} />
             <div className="container">
                 <div className="row" dir="rtl">
@@ -46,7 +46,7 @@ const SubHero = ({ title, subtitle, bgImage, breadcrumbs }) => {
                             ))
                         ) : (
                             <>
-                                <li className="breadcrumb-item active" aria-current="page">{title}</li>
+                                <li className="breadcrumb-item active" aria-current="page">{subtitle}</li>
                                 <li className="breadcrumb-item"><a href="/">الرئيسية</a></li>
                             </>
                         )}

@@ -1,0 +1,178 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About us",
+    "partners": "Partners",
+    "products": "Products & Services",
+    "blogs": "Blogs",
+    "faqs": "FAQs",
+    "contact": "Contact us",
+    "switchLang": "العربية"
+  },
+  "hero": {
+    "video": "/images/TBA Hero Section Video Edit WebM.webm"
+  },
+  "about": {
+    "title": "Tob brands Arabian trading co",
+    "description": "TBA is a Saudi company specialized in importing and distributing luxury food products. Since our establishment, we have focused on providing high-quality imported food products including luxury coffee and chocolate, in addition to a wide range of sweets, biscuits and international products. Through a comprehensive distribution network that includes branches and warehouses across the Kingdom, we are always keen to meet the needs of the Saudi market and provide the best shopping experience for our customers.",
+    "readMore": "Read more"
+  },
+  "vision": {
+    "title": "Our vision",
+    "description": "To be the leading distributor of luxury food products in the Kingdom of Saudi Arabia, with international expansion into the confectionery and luxury food products sector."
+  },
+  "mission": {
+    "title": "Our mission",
+    "description": "At TBA, we import and distribute high-quality food products that align with the latest trends. Our global partnerships ensure premium products are always available in Saudi Arabia at competitive prices."
+  },
+  "values": {
+    "title": "Our values",
+    "description": "At TBA, we operate under the guidance of our established values ​​that ensure we provide the best products and services.",
+    "list": "(Professionalism, Commitment, Quality First)"
+  },
+  "services": {
+    "title": "Our services",
+    "service1": {
+      "title": "Luxury food distribution",
+      "description": "TPA is an authorized distributor for a number of international brands that offer imported food products from luxury coffee, chocolate, biscuits, and distinctive sweets. Through our advanced logistics network, we ensure that products reach all parts of the Kingdom quickly and accurately."
+    },
+    "service2": {
+      "title": "Import and distribution of luxury coffee and chocolate",
+      "description": "We offer a variety of premium chocolates and specialty coffees imported from top global brands such as Nestle, Ferrero, Mars, and McVitie's."
+    },
+    "service3": {
+      "title": "Comprehensive Distribution Solutions",
+      "description": "We guarantee you the best shopping experience through:",
+      "points": [
+        "Wide distribution network covering all regions of the Kingdom.",
+        "Warehouses equipped with the latest technologies to ensure safe storage.",
+        "Strategic partnerships with transportation companies to ensure delivery of products on time and in the best condition."
+      ]
+    }
+  },
+  "partners": {
+    "title": "Exclusive partners",
+    "subtitle": "We are proud of our distinguished relationships with many famous international brands."
+  },
+  "brands": {
+    "title": "Our brands",
+    "subtitle": "We are proud of our brands with many famous international brands."
+  },
+  "globalPartnerships": {
+    "title": "Global partnerships",
+    "subtitle": "Proud to partner with top brands to deliver trusted, high-quality products."
+  },
+  "gallery": {
+    "title": "Our Gallery",
+    "subtitle": "From the exquisite dishes to the cheerful atmosphere, our grand opening promises an unforgettable dining experience.",
+    "view": "View"
+  },
+  "products": {
+    "title": "Our Products",
+    "subtitle": "We offer exclusive imported food products from international brands, including:"
+  },
+  "cta": {
+    "title": "Enjoy a comfortable and easy shopping experience with TPA!",
+    "description": "You can now choose your favorite products from a diverse list of luxury foods with ease, with the ability to choose the quantities that suit you and add them to the shopping cart. We offer you flexible payment options to suit your needs, whether you prefer to pay upon receipt, by credit card, or using modern electronic payment applications.",
+    "button": "Visit our store"
+  },
+  "whyUs": {
+    "title": "Why choose TPA?",
+    "feature1": {
+      "title": "High quality food products",
+      "description": "We are keen to choose products that meet the highest quality standards"
+    },
+    "feature2": {
+      "title": "Exclusive distribution and authorized distributors",
+      "description": "We offer exclusively imported products from the best international brands"
+    },
+    "feature3": {
+      "title": "Customer service",
+      "description": "We put our customers at the forefront of our priorities and are keen to provide the best shopping experience for our customers"
+    },
+    "feature4": {
+      "title": "Advanced logistics network",
+      "description": "Ensuring that products arrive safely and on time"
+    }
+  },
+  "reviews": {
+    "title": "Customers review",
+    "review1": {
+      "text": "Excellent service and top-quality products",
+      "author": "ShopsZe Store"
+    },
+    "review2": {
+      "text": "Finally found a place that offers authentic luxury products at reasonable prices",
+      "author": "Al Wisal Company"
+    },
+    "review3": {
+      "text": "Highly recommend them — the product quality and professional service make all the difference",
+      "author": "Milaknight"
+    }
+  },
+  "blogs": {
+    "title": "Blogs",
+    "subtitle": "Latest Articles",
+    "items": [
+      {
+        "slug": "Different-kinds-of-sweets",
+        "title": "Different kinds of sweets",
+        "excerpt": "When it comes to celebrating special moments or simply indulging in a delightful treat, exploring the different kinds of sweets available can truly elevate the experience. At TBA, a leading Saudi company specialized in importing and distributing luxury food products, we offer an exquisite variety of ready-made sweets that cater to every taste and occasion. Whether you are planning a hospitality event, looking for elegant gifts, or simply want to enjoy high-quality desserts at home, our selection covers different kinds of sweets that guarantee satisfaction and sophistication."
+      },
+      {
+        "slug": "Breakfast-cereals",
+        "title": "Breakfast cereals",
+        "excerpt": "When it comes to starting your day right, breakfast cereals are a popular and convenient choice for millions. Whether you’re looking for a quick meal for busy mornings or a nutritious option to fuel your body, selecting the right cereal can make all the difference. At TBA, a leading Saudi company specializing in importing and distributing premium food products, we offer a wide variety of high-quality breakfast cereals from trusted cereal brands that cater to different tastes and dietary needs. From classic favorites like corn flakes and frosted flakes to healthier options such as low carb cereal and sugar free cereal, our selection is designed to satisfy everyone."
+      }
+    ],
+    "readMore": "Read more"
+  },
+  "aboutPage": {
+    "title": "About us",
+    "subtitle": "Exceptional quality, and years of experience in importing and distributing luxury international brands",
+    "feature1": {
+      "title": "Quality First",
+      "description": "We believe the customer deserves the best. Thus, our products are always the best in quality."
+    },
+    "feature2": {
+      "title": "Commitment",
+      "description": "We work with the best partners globally to provide products in Saudi Arabia."
+    },
+    "feature3": {
+      "title": "Professionalism",
+      "description": "Our specialized and carefully trained team provides you with the best services."
+    },
+    "history": {
+      "title": "How did TBA start?",
+      "item1": "Since 2014, we have established TBA with one goal: to provide the best to customers in the Kingdom. We work with leading global companies to provide a select range of food products that are characterized by high quality and added value. Our distinguished history and experience in the market has made us a trusted name in the field of importing and distributing luxury food products.",
+      "item2Title": "Our goals",
+      "item2Content": "Despite the challenges facing global markets in recent years, TBA has continued to grow and expand, as we have significantly increased the volume of our imports to the Saudi market, and increased our partnerships with leading global brands. This includes expanding our distribution centers and warehouses in several Saudi cities.",
+      "item3Title": "Our future vision",
+      "item3Content": "We aim to be the leading company in the luxury food sector in the Kingdom, and we aim to expand the distribution of our products to include additional markets in the Middle East and the world."
+    },
+    "cta": {
+      "title": "If you need any questions or assistance, please feel free to contact us.",
+      "button": "Contact us"
+    }
+  },
+  "contact": {
+    "title": "Contact us",
+    "subtitle": "Get in touch",
+    "form": {
+      "title": "Send a Message",
+      "subtitle": "Unlock your potential with expert guidance! Schedule your free consultation for personal and business success.",
+      "namePlaceholder": "Full Name",
+      "phonePlaceholder": "Phone Number",
+      "emailPlaceholder": "Email Address",
+      "messagePlaceholder": "Message...",
+      "submitButton": "Send Message",
+      "submittingButton": "Sending...",
+      "successTitle": "Message Sent Successfully"
+    },
+    "info": {
+      "desc": "We are happy to hear from you! Whether you have questions, need support, or want to discuss a project, feel free to contact us.",
+      "addressTitle": "Address",
+      "addressContent": "King Fahd, Riyadh, Saudi Arabia 14715"
+    }
+  }
+}

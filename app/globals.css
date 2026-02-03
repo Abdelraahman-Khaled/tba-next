@@ -21,9 +21,13 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-tajawal), sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+[dir="ltr"] body {
+  font-family: var(--font-plus-jakarta-sans), sans-serif !important;
 }
 
 * {
@@ -41,4 +45,25 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+:root {
+  --title-font: var(--font-tajawal), sans-serif;
+}
+
+[dir="ltr"] {
+  --title-font: var(--font-plus-jakarta-sans), sans-serif;
+}
+
+[dir="ltr"] h1, [dir="ltr"] h2, [dir="ltr"] h3, [dir="ltr"] h4, [dir="ltr"] h5, [dir="ltr"] h6,
+[dir="ltr"] .h1, [dir="ltr"] .h2, [dir="ltr"] .h3, [dir="ltr"] .h4, [dir="ltr"] .h5, [dir="ltr"] .h6 {
+  font-family: var(--title-font) !important;
+}
+
+.blog-content-rich ul {
+  color: white !important;
+  padding: 0px 2rem;
+}
+.blog-content-rich ul li {
+margin-bottom: 1rem;
 }

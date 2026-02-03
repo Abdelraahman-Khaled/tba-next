@@ -1,7 +1,8 @@
 import React from 'react';
 
-const Testimonials = ({ t, lang }) => {
+const ReviewsSection = ({ t, lang }) => {
     const isRTL = lang === 'ar';
+
     const reviews = [
         {
             text: t.reviews.review1.text,
@@ -24,15 +25,13 @@ const Testimonials = ({ t, lang }) => {
                     <h2>{t.reviews.title}</h2>
                     <div className="spacer-single"></div>
                 </div>
-                <div className="wahed-row">
+                <div className="wahed-row" dir={isRTL ? 'ltr' : 'rtl'}>
                     {reviews.map((review, index) => (
-                        <div className="box" key={index}>
+                        <div className={`box ${!isRTL && 'text-start'}`} key={index}>
                             <img src="/images/reviews/google.webp" alt="Google Review" />
-                            <p dir={isRTL ? 'rtl' : 'ltr'}>
-                                {review.text}
-                            </p>
+                            <p>{review.text}</p>
                             <span>{review.author}</span>
-                            <img src="/images/reviews/google-stars.webp" alt="Google Stars" />
+                            <img src="/images/reviews/google-stars.webp" alt="5 Stars" />
                         </div>
                     ))}
                 </div>
@@ -41,4 +40,4 @@ const Testimonials = ({ t, lang }) => {
     );
 };
 
-export default Testimonials;
+export default ReviewsSection;

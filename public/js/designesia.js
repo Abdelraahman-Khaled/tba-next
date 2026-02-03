@@ -158,20 +158,22 @@
         //Scroll back to top
 
         var progressPath = document.querySelector('.progress-wrap path');
-        var pathLength = progressPath.getTotalLength();
-        progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
-        progressPath.style.strokeDasharray = pathLength + ' ' + pathLength;
-        progressPath.style.strokeDashoffset = pathLength;
-        progressPath.getBoundingClientRect();
-        progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';
-        var updateProgress = function () {
-            var scroll = $(window).scrollTop();
-            var height = $(document).height() - $(window).height();
-            var progress = pathLength - (scroll * pathLength / height);
-            progressPath.style.strokeDashoffset = progress;
+        if (progressPath) {
+            var pathLength = progressPath.getTotalLength();
+            progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
+            progressPath.style.strokeDasharray = pathLength + ' ' + pathLength;
+            progressPath.style.strokeDashoffset = pathLength;
+            progressPath.getBoundingClientRect();
+            progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';
+            var updateProgress = function () {
+                var scroll = $(window).scrollTop();
+                var height = $(document).height() - $(window).height();
+                var progress = pathLength - (scroll * pathLength / height);
+                progressPath.style.strokeDashoffset = progress;
+            }
+            updateProgress();
+            $(window).scroll(updateProgress);
         }
-        updateProgress();
-        $(window).scroll(updateProgress);
         var offset = 250;
         var duration = 550;
         jQuery(window).on('scroll', function () {
@@ -527,18 +529,18 @@
         new WOW().init();
         load_magnificPopup();
         try {
-             $(".jarallax").jarallax();
-        } catch(e) { console.log(e); }
+            $(".jarallax").jarallax();
+        } catch (e) { console.log(e); }
         jQuery('#preloader').fadeOut(500);
     }
 
     $(window).on('load', function () {
         init_load();
     });
-    
+
     init_load();
     // Failsafe: Ensure scrolling is enabled after a short delay
-    setTimeout(function() {
+    setTimeout(function () {
         // Force enable scrolling
         jQuery('html, body').css({
             'overflow': 'visible',
@@ -550,7 +552,7 @@
         jQuery('body').removeClass('preloader-running modal-open no-scroll');
         jQuery('html').removeClass('preloader-running modal-open no-scroll');
         // Ensure preloader is gone
-        jQuery('#preloader').fadeOut(500); 
+        jQuery('#preloader').fadeOut(500);
         jQuery('#preloader').remove();
     }, 1000);
 
