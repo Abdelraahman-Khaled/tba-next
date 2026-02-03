@@ -60,10 +60,21 @@ a {
   font-family: var(--title-font) !important;
 }
 
-.blog-content-rich ul {
+.blog-content-rich ul,
+.faq-section ul {
   color: white !important;
   padding: 0px 2rem;
 }
-.blog-content-rich ul li {
-margin-bottom: 1rem;
+
+.blog-content-rich ul li,
+.faq-section ul li {
+  margin-bottom: 1rem;
+}
+
+.accordion-item:first-of-type .accordion-button{
+  direction: ltr;
+}
+
+[dir= ltr] .accordion-item:first-of-type .accordion-button{
+direction: rtl;
 }

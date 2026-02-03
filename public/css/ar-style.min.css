@@ -35,6 +35,10 @@ h5.uptitle,
     margin-right: auto;
     margin-left: initial;
 }
+[dir =ltr] .accordion-button::after{
+    margin-left: auto;
+    margin-right: inherit;
+}
 .contact-info-item .icon-box {
     margin-left: auto;
     margin-right: initial;
