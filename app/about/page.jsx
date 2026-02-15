@@ -1,32 +1,21 @@
-'use client';
+import { cookies } from 'next/headers';
+import AboutPageContent from '../components/About/AboutPageContent';
 
-import React from 'react';
-import SubHero from '../components/SubHero';
-import Introduction from '../components/About/Introduction';
-import History from '../components/About/History';
-import Features from '../components/About/Features';
-import Testimonials from '../components/Testimonials';
-import CTA from '../components/CTA';
-import { useLanguage } from '../context/LanguageContext';
+export async function generateMetadata() {
+    const cookieStore = await cookies();
+    const lang = cookieStore.get('language')?.value || 'ar';
+    const isArabic = lang === 'ar';
+
+    return {
+        title: isArabic ? "TBA - من نحن" : "TBA - About us",
+        description: isArabic
+            ? "TBA شركة متخصصة في استيراد وتوزيع المواد الغذائية الفاخرة في السعودية نوفر منتجات مستوردة من أشهر العلامات التجارية العالمية خدمات التوزيع لبائعي التجزئة والمحال بكفاءة وسرعة تلبية الطلبات الخاصة"
+            : "Wholesale food, import food, food distribution, food supplier, food distributor TBA is a Saudi company specialized in importing and distributing luxury food products and supplying and distributing and delivering food products",
+    };
+}
 
 const AboutPage = () => {
-    const { t, lang } = useLanguage();
-    const isRTL = lang === 'ar';
-
-    return (
-        <div id="content" className={`no-bottom no-top ${isRTL ? 'text-end' : ''}`}>
-            <SubHero
-                title={t.aboutPage.title}
-                subtitle={t.aboutPage.subtitle}
-                bgImage="/images/bg-3.webp"
-            />
-            <Introduction t={t} lang={lang} />
-            <Features t={t} lang={lang} />
-            <CTA t={t} lang={lang} />
-            <History t={t} lang={lang} />
-            <Testimonials t={t} lang={lang} />
-        </div>
-    );
+    return <AboutPageContent />;
 };
 
 export default AboutPage;

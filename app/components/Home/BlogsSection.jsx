@@ -1,9 +1,22 @@
 import React from 'react';
 import Link from 'next/link';
+import { useQuery } from '@tanstack/react-query';
+import { getBlogs } from '../../api/blog';
 
 const BlogsSection = ({ t, lang }) => {
     const isRTL = lang === 'ar';
     const basePath = lang === 'en' ? '/en' : '';
+
+    const { data: blogs } = useQuery({
+        queryKey: ['blogs'],
+        queryFn: getBlogs,
+        staleTime: 1000 * 60 * 5, // 5 minutes
+    });
+
+    // Take only the first 2 blogs for the home page
+    const displayBlogs = blogs?.slice(0, 2) || [];
+
+    if (!displayBlogs.length) return null;
 
     return (
         <section id="blogs">
@@ -17,57 +30,65 @@ const BlogsSection = ({ t, lang }) => {
                 </div>
                 <div className="row">
                     <div className="col-lg-12 blog-list">
-                        {t.blogs.items.map((blog, index) => (
-                            <div className="blog-item row align-items-center g-3 gx-5" key={blog.slug}>
-                                {index % 2 === 0 ? (
-                                    <>
-                                        <div className="col-lg-6">
-                                            <div className="post-content">
-                                                <div className="post-text">
-                                                    <h3>
-                                                        <Link href={`${basePath}/${blog.slug}`}>
-                                                            {blog.title}
+                        {displayBlogs.map((blog, index) => {
+                            const title = isRTL ? blog.title_ar : blog.title_en;
+                            const excerpt = isRTL ? blog.description_ar : blog.description_en; // Using description as excerpt for now
+                            const langPhoto = blog.photos?.find(p => p.is_arabic === isRTL);
+                            const imageUrl = langPhoto?.url || blog.photos?.[0]?.url || '/images/blogpage.webp';
+                            const slideUrl = `${basePath}/blogs/${blog.slug}`;
+
+                            return (
+                                <div className="blog-item row align-items-center g-3 gx-5" key={blog.slug}>
+                                    {index % 2 === 0 ? (
+                                        <>
+                                            <div className="col-lg-6">
+                                                <div className="post-content">
+                                                    <div className="post-text">
+                                                        <h3>
+                                                            <Link href={slideUrl}>
+                                                                {title}
+                                                            </Link>
+                                                        </h3>
+                                                        <p dir={isRTL ? 'rtl' : 'ltr'}>
+                                                            {excerpt}
+                                                        </p>
+                                                        <Link href={slideUrl} className="btn-line">
+                                                            {t.about.readMore}
                                                         </Link>
-                                                    </h3>
-                                                    <p dir={isRTL ? 'rtl' : 'ltr'}>
-                                                        {blog.excerpt}
-                                                    </p>
-                                                    <Link href={`${basePath}/${blog.slug}`} className="btn-line">
-                                                        {t.about.readMore}
-                                                    </Link>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="col-lg-6">
-                                            <img src={index === 0 ? '/images/blogs/حلويات شرقية و غربية copy.webp' : '/images/blogs/حبوب افطار copy.webp'} className="img-fluid" alt={blog.title} />
-                                        </div>
-                                    </>
-                                ) : (
-                                    <>
-                                        <div className="col-lg-6">
-                                            <img src={index === 0 ? '/images/blogs/حلويات شرقية و غربية copy.webp' : '/images/blogs/حبوب افطار copy.webp'} className="img-fluid" alt={blog.title} />
-                                        </div>
-                                        <div className="col-lg-6">
-                                            <div className="post-content">
-                                                <div className="post-text">
-                                                    <h3>
-                                                        <Link href={`${basePath}/${blog.slug}`}>
-                                                            {blog.title}
+                                            <div className="col-lg-6">
+                                                <img src={imageUrl} className="img-fluid" alt={title} />
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="col-lg-6">
+                                                <img src={imageUrl} className="img-fluid" alt={title} />
+                                            </div>
+                                            <div className="col-lg-6">
+                                                <div className="post-content">
+                                                    <div className="post-text">
+                                                        <h3>
+                                                            <Link href={slideUrl}>
+                                                                {title}
+                                                            </Link>
+                                                        </h3>
+                                                        <p dir={isRTL ? 'rtl' : 'ltr'}>
+                                                            {excerpt}
+                                                        </p>
+                                                        <Link href={slideUrl} className="btn-line">
+                                                            {t.about.readMore}
                                                         </Link>
-                                                    </h3>
-                                                    <p dir={isRTL ? 'rtl' : 'ltr'}>
-                                                        {blog.excerpt}
-                                                    </p>
-                                                    <Link href={`${basePath}/${blog.slug}`} className="btn-line">
-                                                        {t.about.readMore}
-                                                    </Link>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </>
-                                )}
-                            </div>
-                        ))}
+                                        </>
+                                    )}
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             </div>

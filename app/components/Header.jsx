@@ -12,6 +12,7 @@ const Header = () => {
     const isArabic = lang === 'ar';
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isNavbarOpen, setIsNavbarOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -48,7 +49,7 @@ const Header = () => {
     };
 
     return (
-        <header>
+        <header dir={isArabic ? 'rtl' : 'ltr'}>
             <div className={`navigation-wrap start-header ${isScrolled ? 'scroll-on' : 'start-style'}`}>
                 <div className="container">
                     <div className="row">
@@ -61,24 +62,23 @@ const Header = () => {
                                 <button
                                     className="navbar-toggler"
                                     type="button"
-                                    data-toggle="collapse"
-                                    data-target="#navbarSupportedContent"
+                                    onClick={() => setIsNavbarOpen(!isNavbarOpen)}
                                     aria-controls="navbarSupportedContent"
-                                    aria-expanded="false"
+                                    aria-expanded={isNavbarOpen}
                                     aria-label="Toggle navigation"
                                 >
                                     <span className="navbar-toggler-icon"></span>
                                 </button>
 
-                                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                                    <ul id="mainmenu" className={`navbar-nav ${isArabic ? 'me-auto' : 'ms-auto'} py-4 py-md-0`}>
+                                <div className={`collapse navbar-collapse ${isNavbarOpen ? 'show' : ''}`} id="navbarSupportedContent">
+                                    <ul className={`navbar-nav ${isArabic ? 'me-auto' : 'ms-auto'} py-4 py-md-0`}>
                                         <li className={`nav-item ps-4 ps-md-0 ms-0 ms-md-4 ${isActive('/') ? 'active-link' : ''}`}>
                                             <Link className="nav-link" href="/">{t.nav.home}</Link>
                                         </li>
                                         <li className={`nav-item ps-4 ps-md-0 ms-0 ms-md-4 ${isActive('/about') ? 'active-link' : ''}`}>
                                             <Link className="nav-link" href="/about">{t.nav.about}</Link>
                                         </li>
-                                        <li className="nav-item dropdown ps-4 ps-md-0 ms-0 ms-md-4">
+                                        <li className={`nav-item dropdown ps-4 ps-md-0 ms-0 ms-md-4 ${isActive('/partners') ? 'active-link' : ''}`}>
                                             <a
                                                 className="nav-link dropdown-toggle"
                                                 href="#"
@@ -93,31 +93,31 @@ const Header = () => {
                                                 {t.nav.partners}
                                             </a>
                                             <div className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}>
-                                                <Link className="dropdown-item" href="/partners/EL-SABOR" onClick={closeDropdown}>
+                                                <Link className={`dropdown-item ${isActive('/partners/EL-SABOR') ? 'active' : ''}`} href="/partners/EL-SABOR" onClick={closeDropdown}>
                                                     {isArabic ? 'إل سابور' : 'El Sabor'}
                                                 </Link>
-                                                <Link className="dropdown-item" href="/partners/Franui" onClick={closeDropdown}>
+                                                <Link className={`dropdown-item ${isActive('/partners/Franui') ? 'active' : ''}`} href="/partners/Franui" onClick={closeDropdown}>
                                                     {isArabic ? 'فرانوي' : 'Franui'}
                                                 </Link>
-                                                <Link className="dropdown-item" href="/partners/Legend" onClick={closeDropdown}>
+                                                <Link className={`dropdown-item ${isActive('/partners/Legend') ? 'active' : ''}`} href="/partners/Legend" onClick={closeDropdown}>
                                                     {isArabic ? 'نجوين ليجند' : 'Legend'}
                                                 </Link>
-                                                <Link className="dropdown-item" href="/partners/littel-donkey" onClick={closeDropdown}>
+                                                <Link className={`dropdown-item ${isActive('/partners/littel-donkey') ? 'active' : ''}`} href="/partners/littel-donkey" onClick={closeDropdown}>
                                                     Little Donkey
                                                 </Link>
-                                                <Link className="dropdown-item" href="/partners/Marshzone" onClick={closeDropdown}>
+                                                <Link className={`dropdown-item ${isActive('/partners/Marshzone') ? 'active' : ''}`} href="/partners/Marshzone" onClick={closeDropdown}>
                                                     {isArabic ? 'مارشزون' : 'Marshzone'}
                                                 </Link>
-                                                <Link className="dropdown-item" href="/partners/Mr.Brownie" onClick={closeDropdown}>
+                                                <Link className={`dropdown-item ${isActive('/partners/Mr.Brownie') ? 'active' : ''}`} href="/partners/Mr.Brownie" onClick={closeDropdown}>
                                                     {isArabic ? 'مستر براوني' : 'Mr Brownie'}
                                                 </Link>
-                                                <Link className="dropdown-item" href="/partners/Sweet-Pistachio" onClick={closeDropdown}>
+                                                <Link className={`dropdown-item ${isActive('/partners/Sweet-Pistachio') ? 'active' : ''}`} href="/partners/Sweet-Pistachio" onClick={closeDropdown}>
                                                     {isArabic ? 'سويت بستاشيو' : 'Sweet Pistachio'}
                                                 </Link>
-                                                <Link className="dropdown-item" href="/partners/Vicenzi" onClick={closeDropdown}>
+                                                <Link className={`dropdown-item ${isActive('/partners/Vicenzi') ? 'active' : ''}`} href="/partners/Vicenzi" onClick={closeDropdown}>
                                                     Matilde Vicenzi
                                                 </Link>
-                                                <Link className="dropdown-item" href="/partners/Trolli" onClick={closeDropdown}>
+                                                <Link className={`dropdown-item ${isActive('/partners/Trolli') ? 'active' : ''}`} href="/partners/Trolli" onClick={closeDropdown}>
                                                     Trolli
                                                 </Link>
                                             </div>

@@ -8,10 +8,10 @@ const PartnersSection = ({ t, lang }) => {
         <section className="border-bottom-0">
             <div className="container">
                 <div className="row aligns-item-center">
-                    <div className="col-lg-6 offset-lg-3">
-                        <div className="text-center">
+                    <div className="col-lg-6 mx-auto">
+                        <div className="text-center w-100">
                             <h2>{t.partners.title}</h2>
-                            <p className="lead">{t.partners.subtitle}</p>
+                            <p className="lead" dir='ltr'>{t.partners.subtitle}</p>
                             <div className="spacer-single"></div>
                         </div>
                     </div>

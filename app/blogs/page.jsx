@@ -20,7 +20,7 @@ const BlogsPage = () => {
     if (isLoading) {
         return (
             <div id="content" className="no-bottom no-top">
-                <SubHero title={t.nav.blogs} subtitle={t.blogs.subtitle} bgImage="/images/blogpage.webp" />
+                <SubHero title={t.nav.blogs} headerSubtitle={t.blogs.subtitle} subtitle={t.blogs.subtitle} bgImage="/images/blogpage.webp" />
                 <section className="bg-coffee">
                     <div className="container text-center py-5">
                         <div className="spinner-border text-light" role="status">

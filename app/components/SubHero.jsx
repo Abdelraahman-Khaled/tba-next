@@ -1,8 +1,12 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
-const SubHero = ({ title, subtitle, bgImage, breadcrumbs }) => {
+const SubHero = ({ title, headerSubtitle = subtitle || "", subtitle, bgImage, bgImageAlt, breadcrumbs }) => {
+    const { t, lang } = useLanguage();
+    const isRTL = lang === 'ar';
+
     useEffect(() => {
         // Reinitialize jarallax after component mounts
         if (typeof window !== 'undefined' && window.jQuery) {
@@ -22,13 +26,13 @@ const SubHero = ({ title, subtitle, bgImage, breadcrumbs }) => {
 
     return (
         <section id="subheader" className="jarallax text-light" suppressHydrationWarning >
-            <img src={bgImage} className="jarallax-img" alt={title} />
+            <img src={bgImage} className="jarallax-img" alt={bgImageAlt || title} />
             <div className="container">
-                <div className="row" dir="rtl">
+                <div className="row">
                     <div className="col-lg-12">
                         <div className="text-center">
-                            <h5 className="uptitle">{title}</h5>
-                            <h1>{subtitle}</h1>
+                            <h5 className="uptitle">{headerSubtitle}</h5>
+                            <h1>{title}</h1>
                         </div>
                     </div>
                 </div>
@@ -38,17 +42,24 @@ const SubHero = ({ title, subtitle, bgImage, breadcrumbs }) => {
                             breadcrumbs.map((crumb, index) => (
                                 <li
                                     key={index}
-                                    className={`breadcrumb-item ${index === 0 ? 'active' : ''}`}
-                                    aria-current={index === 0 ? 'page' : undefined}
+                                    className={`breadcrumb-item ${index === breadcrumbs.length - 1 ? 'active' : ''}`}
+                                    aria-current={index === breadcrumbs.length - 1 ? 'page' : undefined}
                                 >
                                     {crumb.link ? <a href={crumb.link}>{crumb.label}</a> : crumb.label}
                                 </li>
                             ))
                         ) : (
-                            <>
-                                <li className="breadcrumb-item active" aria-current="page">{subtitle}</li>
-                                <li className="breadcrumb-item"><a href="/">الرئيسية</a></li>
-                            </>
+                            !isRTL ? (
+                                <div className="d-flex" dir='ltr'>
+                                    <li className="breadcrumb-item"><a href="/">{t.nav.home}</a></li>
+                                    <li className="breadcrumb-item active" aria-current="page">{subtitle}</li>
+                                </div>
+                            ) : (
+                                <>
+                                    <li className="breadcrumb-item active" aria-current="page">{subtitle}</li>
+                                    <li className="breadcrumb-item"><a href="/">{t.nav.home}</a></li>
+                                </>
+                            )
                         )}
                     </ol>
                 </div>

@@ -22,9 +22,11 @@ export async function generateMetadata({ params }) {
         };
     }
 
+    const seo = partner.seo?.[lang] || {};
+
     return {
-        title: `TBA - ${partner.name[lang] || partner.name.ar}`,
-        description: partner.description[lang] || partner.description.ar,
+        title: seo.title || `TBA - ${partner.name[lang] || partner.name.ar}`,
+        description: seo.description || partner.description[lang] || partner.description.ar,
     };
 }
 

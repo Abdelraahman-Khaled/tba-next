@@ -1,10 +1,15 @@
 import { Geist, Geist_Mono, Tajawal, Plus_Jakarta_Sans, Marcellus } from "next/font/google"; // Import fonts
+import Script from "next/script";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { LanguageProvider } from "./context/LanguageContext";
 import { cookies } from "next/headers";
 import Providers from "./components/QueryClientProvider";
+import ClientScripts from "./components/ClientScripts";
+import Preloader from "./components/Preloader";
+import ScrollToTop from "./components/ScrollToTop";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,44 +39,153 @@ const marcellus = Marcellus({
   variable: "--font-marcellus",
 });
 
-export const metadata = {
-  title: "TBA - Top Brands Arabian Trading",
-  description: "Specialized in importing and distributing luxury food products in Saudi Arabia.",
-};
+export async function generateMetadata() {
+  const cookieStore = await cookies();
+  const lang = cookieStore.get('language')?.value || 'ar';
+  const isArabic = lang === 'ar';
+
+  const metadata = {
+    title: isArabic 
+      ? "شركة قمة الماركات العربية للتجارة tba"
+      : "Tob brands Arabian trading co",
+    description: isArabic
+      ? "TBA شركة سعودية متخصصة في استيراد وتوزيع المواد الغذائية الفاخرة استيراد مواد غذائية مورد مواد غذائية موزع مواد غذائية مستودع مواد غذائية شركات استيراد المواد الغذائية"
+      : "TBA is a Saudi company importing premium food products from the world's finest brands. Explore luxurious global flavors and place your order now for unmatched quality!",
+    keywords: "",
+    authors: [{ name: "شركة قمة الماركات العربية للتجارة TBA" }],
+    openGraph: {
+      title: isArabic 
+        ? "شركة قمة الماركات العربية للتجارة TBA"
+        : "Tob brands Arabian trading co",
+      description: isArabic
+        ? "TBA شركة سعودية متخصصة في استيراد وتوزيع المواد الغذائية الفاخرة. استيراد مواد غذائية، مورد مواد غذائية، موزع مواد غذائية، مستودع مواد غذائية، شركات استيراد المواد الغذائية."
+        : "TBA is a Saudi company importing premium food products from the world's finest brands. Explore luxurious global flavors and place your order now for unmatched quality!",
+      images: ["https://tba.sa/images/logo-2.webp"],
+      url: isArabic ? "https://tba.sa/" : "https://tba.sa/en/",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: isArabic 
+        ? "شركة قمة الماركات العربية للتجارة TBA"
+        : "Tob brands Arabian trading co",
+      description: isArabic
+        ? "TBA شركة سعودية متخصصة في استيراد وتوزيع المواد الغذائية الفاخرة. استيراد مواد غذائية، مورد مواد غذائية، موزع مواد غذائية، مستودع مواد غذائية، شركات استيراد المواد الغذائية."
+        : "TBA is a Saudi company importing premium food products from the world's finest brands. Explore luxurious global flavors and place your order now for unmatched quality!",
+      images: ["https://tba.sa/images/logo-2.webp"],
+    },
+    verification: {
+      google: "7mlwCYnAm164b2DSBg2WrETdZhtbgmoOxF99RNPdN3s",
+    },
+  };
+
+  return metadata;
+}
 
 export default async function RootLayout({ children }) {
   const cookieStore = await cookies();
   const initialLang = cookieStore.get('language')?.value || 'ar';
 
+  const isRTL = initialLang === 'ar';
+
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning>
+    <html lang={initialLang} dir={initialLang === 'ar' ? "ltr" : "rtl"} suppressHydrationWarning style={{overflow:"unset !important"}}>
       <head>
         <link rel="icon" href="/images/logo.ico" type="image/x-icon" />
         <link rel="stylesheet" href="/css/style.min.css" />
+        {/* <link rel="stylesheet" href="/css/ar-style.min.css" /> */}
         <link rel="stylesheet" href="/css/coloring.min.css" />
         <link rel="stylesheet" href="/css/colors/cream.min.css" />
         <link rel="stylesheet" href="/css/03_custom.min.css" />
-        <link rel="stylesheet" href="/css/ar-style.min.css" />
+
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": isRTL ? "شركة قمة الماركات العربية للتجارة" : "Tob Brands Arabian Trading Co",
+              "alternateName": isRTL ? "Tob Brands Arabian Trading Co" : "شركة قمة الماركات العربية للتجارة",
+              "url": isRTL ? "https://tba.sa/" : "https://tba.sa/en/",
+              "logo": "https://tba.sa/images/logo-2.webp",
+              "description": isRTL 
+                ? "شركة سعودية متخصصة في استيراد وتوزيع المواد الغذائية الفاخرة من أشهر العلامات التجارية العالمية."
+                : "TBA is a Saudi company importing premium food products from the world's finest brands.",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": isRTL ? "الملك فهد" : "King Fahd",
+                "addressLocality": isRTL ? "الرياض" : "Riyadh",
+                "postalCode": "14715",
+                "addressCountry": "SA"
+              },
+              "areaServed": "SA",
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": isRTL ? "خدمات شركة TBA" : "TBA Services",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": isRTL 
+                        ? "استيراد وتوزيع القهوة والشوكولاتة الفاخرة"
+                        : "Import and distribution of luxury coffee and chocolate"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": isRTL 
+                        ? "توزيع المواد الغذائية الفاخرة"
+                        : "Luxury food distribution"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": isRTL 
+                        ? "حلول شاملة للتوزيع"
+                        : "Comprehensive Distribution Solutions"
+                    }
+                  }
+                ]
+              }
+            })
+          }}
+        />
 
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${tajawal.variable} ${plusJakartaSans.variable} ${marcellus.variable} dark-scheme vw-100`} suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${tajawal.variable} ${plusJakartaSans.variable} ${marcellus.variable} dark-scheme vw-100 overflow-x-hidden`} suppressHydrationWarning>
         <LanguageProvider initialLang={initialLang}>
           <Providers>
             <div id="wrapper" className="position-relative">
-              <Header />
+              <div className="shape shape-1"></div>
+              <div className="shape shape-2"></div>
+              <Header /> 
               {children}
               <Footer />
-              <div id="preloader">
-                <div className="preloader1"></div>
-              </div>
+
+             <Preloader/>
+             <ScrollToTop/>
+
             </div>
           </Providers>
         </LanguageProvider>
         <script src="/js/plugins.js"></script>
         <script src="/js/designesia.js"></script>
-        <script src="/js/swiper-bundle.min.js"></script>
         <script src="/js/custom-swiper.js"></script>
-        <script src="/js/progress-wrap.js"></script>
+        
+        {/* External CDN Scripts */}
+        <Script 
+          src="https://player.vimeo.com/api/player.js" 
+          strategy="lazyOnload"
+        />
+        
+        {/* Client-side scripts for Swiper, carousel cloning, and CSS fallback */}
+        <ClientScripts />
       </body>
     </html>
   );

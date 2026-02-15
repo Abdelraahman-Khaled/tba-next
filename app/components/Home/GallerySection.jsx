@@ -60,8 +60,8 @@ const GallerySection = ({ t, lang }) => {
         <section aria-label="section">
             <div className="container">
                 <div className="row aligns-item-center">
-                    <div className="col-lg-6 offset-lg-3">
-                        <div className="text-center">
+                    <div className="col-lg-6 mx-auto">
+                        <div className="text-center w-100">
                             <h2>{t.gallery.title}</h2>
                             <p className="lead" dir={isRTL ? 'rtl' : 'ltr'}>
                                 {t.gallery.subtitle}

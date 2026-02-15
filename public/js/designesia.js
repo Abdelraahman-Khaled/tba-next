@@ -538,23 +538,8 @@
         init_load();
     });
 
-    init_load();
-    // Failsafe: Ensure scrolling is enabled after a short delay
-    setTimeout(function () {
-        // Force enable scrolling
-        jQuery('html, body').css({
-            'overflow': 'visible',
-            'overflow-y': 'scroll',
-            'overflow-x': 'hidden',
-            'height': 'auto'
-        });
-        // Remove any classes that might block scroll
-        jQuery('body').removeClass('preloader-running modal-open no-scroll');
-        jQuery('html').removeClass('preloader-running modal-open no-scroll');
-        // Ensure preloader is gone
-        jQuery('#preloader').fadeOut(500);
-        jQuery('#preloader').remove();
-    }, 1000);
+
+
 
     var lastScrollTop = 0;
 

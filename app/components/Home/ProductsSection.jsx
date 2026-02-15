@@ -6,50 +6,54 @@ const ProductsSection = ({ t, lang }) => {
     const isRTL = lang === 'ar';
 
     const products = [
-        { id: 1, image: '/images/products/1.webp' },
-        { id: 6, image: '/images/products/6.webp' },
-        { id: 3, image: '/images/products/3.webp' },
-        { id: 2, image: '/images/products/2.webp' },
-        { id: 4, image: '/images/products/4.webp' },
-        { id: 5, image: '/images/products/5.webp' },
+        { id: 1, image: '/images/products/1.webp', altAr: 'شركاء توزيع أغذية', altEn: 'Coffee' },
+        { id: 6, image: '/images/products/6.webp', altAr: 'قهوة فاخرة مستوردة', altEn: 'Coffee' },
+        { id: 3, image: '/images/products/3.webp', altAr: 'شوكولاتة فاخرة مستوردة', altEn: 'Coffee' },
+        { id: 2, image: '/images/products/2.webp', altAr: 'بسكويت مستورد', altEn: 'Coffee' },
+        { id: 4, image: '/images/products/4.webp', altAr: 'استيراد منتجات غذائية', altEn: 'Coffee' },
+        { id: 5, image: '/images/products/5.webp', altAr: 'موزع أغذية بالرياض', altEn: 'Coffee' },
     ];
 
     useEffect(() => {
-        // Initialize Swiper when component mounts
-        if (typeof window !== 'undefined' && window.Swiper) {
-            const swiper = new window.Swiper('.product-carousel', {
-                slidesPerView: 1,
-                spaceBetween: 30,
-                loop: true,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                breakpoints: {
-                    640: {
-                        slidesPerView: 2,
+        // Small delay to ensure DOM elements are fully rendered
+        const timer = setTimeout(() => {
+            if (typeof window !== 'undefined' && window.Swiper) {
+                const swiper = new window.Swiper('.product-carousel', {
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                    loop: true,
+                    autoplay: {
+                        delay: 3000,
+                        disableOnInteraction: false,
                     },
-                    768: {
-                        slidesPerView: 3,
+                    pagination: {
+                        el: '.product-carousel .swiper-pagination',
+                        clickable: true,
                     },
-                    1024: {
-                        slidesPerView: 4,
+                    navigation: {
+                        nextEl: '.product-carousel .swiper-button-next',
+                        prevEl: '.product-carousel .swiper-button-prev',
                     },
-                },
-            });
+                    breakpoints: {
+                        640: {
+                            slidesPerView: 2,
+                        },
+                        768: {
+                            slidesPerView: 3,
+                        },
+                        1024: {
+                            slidesPerView: 4,
+                        },
+                    },
+                });
 
-            return () => {
-                if (swiper) swiper.destroy();
-            };
-        }
+                return () => {
+                    if (swiper) swiper.destroy(true, true);
+                };
+            }
+        }, 100);
+
+        return () => clearTimeout(timer);
     }, []);
 
     return (
@@ -69,7 +73,7 @@ const ProductsSection = ({ t, lang }) => {
                                 <div className="product">
                                     <div className="product-thumb">
                                         <a href="https://storetba.com/" className="product-image" target="_blank" rel="noopener noreferrer">
-                                            <img src={product.image} alt={`Product ${product.id}`} />
+                                            <img src={product.image} alt={isRTL ? product.altAr : product.altEn} />
                                         </a>
                                     </div>
                                 </div>

@@ -7,7 +7,7 @@ const CTA = ({ t, lang }) => {
         <section id="cta" aria-label="cta" className="call-to-action">
             <div className="container">
                 <div className="row align-items-center">
-                    <div className="col-12 col-md-12 mx-auto text-center">
+                    <div className="col-12 col-md-9 mx-auto text-center">
                         <h2 dir={isRTL ? 'rtl' : 'ltr'}>
                             {t.aboutPage.cta.title}
                         </h2>

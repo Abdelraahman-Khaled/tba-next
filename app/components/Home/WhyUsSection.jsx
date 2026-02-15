@@ -30,10 +30,10 @@ const WhyUsSection = ({ t, lang }) => {
         <section className="why-us">
             <div className="container">
                 <div className="text-center mb-5">
-                    <h2>{t.whyUs.title}</h2>
+                    <h2 dir='ltr' dangerouslySetInnerHTML={{ __html: t.whyUs.title }}></h2>
                     <div className="spacer-single"></div>
                 </div>
-                <div className="row bb gx-5 gy-4 text-center" >
+                <div className="row bb gx-5 gy-4 text-center" dir='ltr' >
                     {
                         (isRTL ? features : [...features].reverse()).map((feature, index) => (
                             <div className="col-lg-3" key={index}>

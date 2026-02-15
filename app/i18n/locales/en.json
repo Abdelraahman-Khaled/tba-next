@@ -3,6 +3,7 @@
     "home": "Home",
     "about": "About us",
     "partners": "Partners",
+    "exclusive": "Exclusive partners",
     "products": "Products & Services",
     "blogs": "Blogs",
     "faqs": "FAQs",
@@ -13,28 +14,29 @@
     "video": "/images/TBA Hero Section Video Edit WebM.webm"
   },
   "about": {
-    "title": "Tob brands Arabian trading co",
-    "description": "TBA is a Saudi company specialized in importing and distributing luxury food products. Since our establishment, we have focused on providing high-quality imported food products including luxury coffee and chocolate, in addition to a wide range of sweets, biscuits and international products. Through a comprehensive distribution network that includes branches and warehouses across the Kingdom, we are always keen to meet the needs of the Saudi market and provide the best shopping experience for our customers.",
+    "title": "<b>Top Brands Arabian Trading Co</b>",
+    "description": "<b>TBA</b> is a Saudi company specialized in importing and distributing luxury food products. Since our establishment, we have focused on providing high-quality imported food products including luxury coffee and chocolate, in addition to a wide range of sweets, biscuits and international products. Through a comprehensive distribution network that includes branches and warehouses across the Kingdom, we are always keen to meet the needs of the Saudi market and provide the best shopping experience for our customers.",
     "readMore": "Read more"
   },
+
   "vision": {
     "title": "Our vision",
-    "description": "To be the leading distributor of luxury food products in the Kingdom of Saudi Arabia, with international expansion into the confectionery and luxury food products sector."
+    "description": "To be the leading <b>distributor of luxury food products</b> in the Kingdom of Saudi Arabia, with international expansion into the confectionery and luxury food products sector."
   },
   "mission": {
     "title": "Our mission",
-    "description": "At TBA, we import and distribute high-quality food products that align with the latest trends. Our global partnerships ensure premium products are always available in Saudi Arabia at competitive prices."
+    "description": "At TBA, we import and <b>distribute high-quality food products</b> that align with the latest trends. Our global partnerships ensure premium products are always available in Saudi Arabia at competitive prices."
   },
   "values": {
     "title": "Our values",
-    "description": "At TBA, we operate under the guidance of our established values ​​that ensure we provide the best products and services.",
+    "description": "At <b>TBA</b>, we operate under the guidance of our established values ​​that ensure we provide the best products and services.",
     "list": "(Professionalism, Commitment, Quality First)"
   },
   "services": {
     "title": "Our services",
     "service1": {
       "title": "Luxury food distribution",
-      "description": "TPA is an authorized distributor for a number of international brands that offer imported food products from luxury coffee, chocolate, biscuits, and distinctive sweets. Through our advanced logistics network, we ensure that products reach all parts of the Kingdom quickly and accurately."
+      "description": "TBA is an authorized distributor for a number of international brands that offer imported food products from luxury coffee, chocolate, biscuits, and distinctive sweets. Through our advanced logistics network, we ensure that products reach all parts of the Kingdom quickly and accurately."
     },
     "service2": {
       "title": "Import and distribution of luxury coffee and chocolate",
@@ -72,12 +74,12 @@
     "subtitle": "We offer exclusive imported food products from international brands, including:"
   },
   "cta": {
-    "title": "Enjoy a comfortable and easy shopping experience with TPA!",
+    "title": "Enjoy a comfortable and easy shopping experience with TBA!",
     "description": "You can now choose your favorite products from a diverse list of luxury foods with ease, with the ability to choose the quantities that suit you and add them to the shopping cart. We offer you flexible payment options to suit your needs, whether you prefer to pay upon receipt, by credit card, or using modern electronic payment applications.",
     "button": "Visit our store"
   },
   "whyUs": {
-    "title": "Why choose TPA?",
+    "title": "Why choose <b>TBA</b>?",
     "feature1": {
       "title": "High quality food products",
       "description": "We are keen to choose products that meet the highest quality standards"
@@ -117,22 +119,23 @@
       {
         "slug": "Different-kinds-of-sweets",
         "title": "Different kinds of sweets",
-        "excerpt": "When it comes to celebrating special moments or simply indulging in a delightful treat, exploring the different kinds of sweets available can truly elevate the experience. At TBA, a leading Saudi company specialized in importing and distributing luxury food products, we offer an exquisite variety of ready-made sweets that cater to every taste and occasion. Whether you are planning a hospitality event, looking for elegant gifts, or simply want to enjoy high-quality desserts at home, our selection covers different kinds of sweets that guarantee satisfaction and sophistication."
+        "excerpt": "When it comes to celebrating special moments or simply indulging in a delightful treat, exploring the different kinds of sweets available can truly elevate the experience. At <b>TBA</b>, a leading Saudi company specialized in importing and distributing luxury food products, we offer an exquisite variety of ready-made sweets that cater to every taste and occasion. Whether you are planning a hospitality event, looking for elegant gifts, or simply want to enjoy high-quality desserts at home, our selection covers different kinds of sweets that guarantee satisfaction and sophistication."
       },
       {
         "slug": "Breakfast-cereals",
         "title": "Breakfast cereals",
-        "excerpt": "When it comes to starting your day right, breakfast cereals are a popular and convenient choice for millions. Whether you’re looking for a quick meal for busy mornings or a nutritious option to fuel your body, selecting the right cereal can make all the difference. At TBA, a leading Saudi company specializing in importing and distributing premium food products, we offer a wide variety of high-quality breakfast cereals from trusted cereal brands that cater to different tastes and dietary needs. From classic favorites like corn flakes and frosted flakes to healthier options such as low carb cereal and sugar free cereal, our selection is designed to satisfy everyone."
+        "excerpt": "When it comes to starting your day right, breakfast cereals are a popular and convenient choice for millions. Whether you’re looking for a quick meal for busy mornings or a nutritious option to fuel your body, selecting the right cereal can make all the difference. At <b>TBA</b>, a leading Saudi company specializing in importing and distributing premium food products, we offer a wide variety of high-quality breakfast cereals from trusted cereal brands that cater to different tastes and dietary needs. From classic favorites like corn flakes and frosted flakes to healthier options such as low carb cereal and sugar free cereal, our selection is designed to satisfy everyone."
       }
     ],
     "readMore": "Read more"
   },
   "aboutPage": {
-    "title": "About us",
-    "subtitle": "Exceptional quality, and years of experience in importing and distributing luxury international brands",
+    "title": "Exceptional quality, years of experience in importing and distributing global luxury brands.",
+    "subtitle": "About us",
+    "introTitle": "Who are we?",
     "feature1": {
       "title": "Quality First",
-      "description": "We believe the customer deserves the best. Thus, our products are always the best in quality."
+      "description": "We believe the customer deserves the best. So our products are always the best in quality."
     },
     "feature2": {
       "title": "Commitment",
@@ -143,12 +146,22 @@
       "description": "Our specialized and carefully trained team provides you with the best services."
     },
     "history": {
-      "title": "How did TBA start?",
-      "item1": "Since 2014, we have established TBA with one goal: to provide the best to customers in the Kingdom. We work with leading global companies to provide a select range of food products that are characterized by high quality and added value. Our distinguished history and experience in the market has made us a trusted name in the field of importing and distributing luxury food products.",
+      "title": "How did <b>TBA</b> start?",
+      "item1": "Since 2014, we have established <b>TBA</b> with one goal: to provide the best to customers in the Kingdom. We work with leading global companies to provide a select range of food products that are characterized by high quality and added value. Our distinguished history and experience in the market has made us a trusted name in the field of importing and distributing luxury food products.",
       "item2Title": "Our goals",
-      "item2Content": "Despite the challenges facing global markets in recent years, TBA has continued to grow and expand, as we have significantly increased the volume of our imports to the Saudi market, and increased our partnerships with leading global brands. This includes expanding our distribution centers and warehouses in several Saudi cities.",
+      "item2Content":"Despite the challenges facing global markets in recent years, the Global Brands Summit for Trade has continued to grow and expand, as we have significantly increased the volume of our imports to the Saudi market, and increased our partnerships with leading global brands. This includes expanding our distribution centers and warehouses in several Saudi cities.",
       "item3Title": "Our future vision",
       "item3Content": "We aim to be the leading company in the luxury food sector in the Kingdom, and we aim to expand the distribution of our products to include additional markets in the Middle East and the world."
+    },
+    "seo": {
+      "title": "TBA - About us",
+      "description": "Wholesale food, import food, food distribution, food supplier, food distributor TBA is a Saudi company specialized in importing and distributing luxury food products and supplying and distributing and delivering food products"
+    },
+    "images": {
+      "subhero": "image",
+      "vision": "image",
+      "goals": "image",
+      "history": "image"
     },
     "cta": {
       "title": "If you need any questions or assistance, please feel free to contact us.",

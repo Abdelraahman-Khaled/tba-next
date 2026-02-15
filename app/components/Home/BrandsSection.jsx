@@ -5,10 +5,10 @@ const BrandsSection = ({ t }) => {
         <section className="border-bottom-0 pt-0">
             <div className="container">
                 <div className="row aligns-item-center">
-                    <div className="col-lg-6 offset-lg-3">
+                    <div className="col-lg-6 mx-auto">
                         <div className="text-center">
                             <h2>{t.brands.title}</h2>
-                            <p className="lead">{t.brands.subtitle}</p>
+                            <p className="lead" dir='ltr'>{t.brands.subtitle}</p>
                             <div className="spacer-single"></div>
                         </div>
                     </div>

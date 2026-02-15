@@ -8,6 +8,7 @@ body {
 *,
 h5.uptitle,
 .month {
+    font-family: "Tajawal", sans-serif !important;
     letter-spacing: initial !important;
 }
 #mainmenu > li a {
@@ -51,7 +52,6 @@ h5.uptitle,
     justify-content: end;
 }
 .about-us-footer {
-    justify-content: flex-end;
 }
 .blog-list .date-box {
     right: initial;

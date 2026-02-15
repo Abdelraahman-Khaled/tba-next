@@ -12,8 +12,8 @@ const GlobalPartnerships = ({ t, lang }) => {
     return (
         <section className="p-0 m-0">
             <div className="row aligns-item-center">
-                <div className="col-lg-6 offset-lg-3">
-                    <div className="text-center">
+                <div className="col-lg-6 mx-auto">
+                    <div className="text-center w-100">
                         <h2>{t.globalPartnerships.title}</h2>
                         <p className="lead" dir={isRTL ? 'rtl' : 'ltr'} suppressHydrationWarning>
                             {t.globalPartnerships.subtitle}

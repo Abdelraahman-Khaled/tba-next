@@ -12,7 +12,9 @@ const PartnerDetailContent = ({ partner }) => {
         name: partner.name[lang] || partner.name.ar,
         title: partner.title[lang] || partner.title.ar,
         description: partner.description[lang] || partner.description.ar,
-        sections: partner.sections
+        sections: Array.isArray(partner.sections)
+            ? partner.sections
+            : (partner.sections[lang] || [])
     };
 
     useEffect(() => {
@@ -58,12 +60,13 @@ const PartnerDetailContent = ({ partner }) => {
         <>
             {partner.video ? (
                 <section id="subheader" className="jarallax text-light">
-                    <video src={partner.video} autoPlay loop muted className="jarallax-img"></video>
+                    <video src={partner.video} autoPlay loop muted playsInline className="jarallax-img"></video>
                 </section>
             ) : (
                 <>
                     <SubHero
-                        title={t.nav.partners}
+                        title={partnerData.name}
+                        headerSubtitle={t.nav.exclusive}
                         subtitle={partnerData.name}
                         description={partnerData.name}
                         bgImage={partner.coverImage}
@@ -79,7 +82,7 @@ const PartnerDetailContent = ({ partner }) => {
                                 {partnerData.title}
                             </h1>
                         )}
-                        <div className={`row align-items-center g-4 zoom-gallery mb-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                        <div className={`row align-items-center g-4 zoom-gallery mb-4 ${isRTL ? '' : 'flex-row'}`}>
                             <div className="col-12 col-md-4">
                                 <figure className="hover-zoom position-relative overflow-hidden">
                                     <a href={partner.logo}>
@@ -93,14 +96,19 @@ const PartnerDetailContent = ({ partner }) => {
                                 </figure>
                             </div>
                             <div className="col-12 col-md-8" dir={isRTL ? 'rtl' : 'ltr'}>
-                                {partnerData.sections.map((section, index) => (
-                                    <div key={index} className="mb-4">
-                                        {section.title[lang] && <h2>{section.title[lang]}</h2>}
-                                        {section.content[lang] && section.content[lang].split('\n').map((para, pIdx) => (
-                                            para.trim() && <p key={pIdx}>{para.trim()}</p>
-                                        ))}
-                                    </div>
-                                ))}
+                                {partnerData.sections.map((section, index) => {
+                                    const sectionTitle = typeof section.title === 'object' ? section.title[lang] : section.title;
+                                    const sectionContent = typeof section.content === 'object' ? section.content[lang] : section.content;
+
+                                    return (
+                                        <div key={index} className="mb-4">
+                                            {sectionTitle && <h2>{sectionTitle}</h2>}
+                                            {sectionContent && (
+                                                <div dangerouslySetInnerHTML={{ __html: sectionContent }} />
+                                            )}
+                                        </div>
+                                    );
+                                })}
                             </div>
                         </div>
                     </div>

@@ -28,7 +28,7 @@ const Testimonials = ({ t, lang }) => {
                     {reviews.map((review, index) => (
                         <div className="box" key={index}>
                             <img src="/images/reviews/google.webp" alt="Google Review" />
-                            <p dir={isRTL ? 'rtl' : 'ltr'}>
+                            <p>
                                 {review.text}
                             </p>
                             <span>{review.author}</span>

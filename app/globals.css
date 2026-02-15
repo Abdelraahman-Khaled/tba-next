@@ -10,12 +10,28 @@
   }
 }
 
+
+
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden !important;
-  overflow-y: scroll !important;
-  height: auto !important;
+  overflow-y: auto !important;
+}
+
+/* Jarallax Styles */
+.jarallax {
+  position: relative;
+  z-index: 0;
+}
+.jarallax > .jarallax-img {
+  position: absolute;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 body {
@@ -26,9 +42,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-[dir="ltr"] body {
+[dir="rtl"] body {
   font-family: var(--font-plus-jakarta-sans), sans-serif !important;
 }
+
+
 
 * {
   box-sizing: border-box;
@@ -51,14 +69,22 @@ a {
   --title-font: var(--font-tajawal), sans-serif;
 }
 
-[dir="ltr"] {
+[lang = en] {
   --title-font: var(--font-plus-jakarta-sans), sans-serif;
 }
 
-[dir="ltr"] h1, [dir="ltr"] h2, [dir="ltr"] h3, [dir="ltr"] h4, [dir="ltr"] h5, [dir="ltr"] h6,
-[dir="ltr"] .h1, [dir="ltr"] .h2, [dir="ltr"] .h3, [dir="ltr"] .h4, [dir="ltr"] .h5, [dir="ltr"] .h6 {
+[lang = en] h1, [lang = en] h2, [lang = en] h3, [lang = en] h4, [lang = en] h5, [lang = en] h6,
+[lang = en] .h1, [lang = en] .h2, [lang = en] .h3, [lang = en] .h4, [lang = en] .h5, [lang = en] .h6 {
   font-family: var(--title-font) !important;
 }
+
+[lang = ar] *,
+h5.uptitle,
+.month {
+    font-family: "Tajawal", sans-serif !important;
+    letter-spacing: initial !important;
+}
+
 
 .blog-content-rich ul,
 .faq-section ul {
@@ -78,3 +104,29 @@ a {
 [dir= ltr] .accordion-item:first-of-type .accordion-button{
 direction: rtl;
 }
+
+/* Fix Progress Circle Visibility */
+.progress-wrap {
+  z-index: 99999 !important;
+  bottom: 30px !important;
+  right: 30px !important;
+}
+
+.progress-wrap svg.progress-circle path {
+  stroke: var(--primary-color, #997173) !important;
+}
+
+
+:is(.swiper-button-prev, .swiper-button-next) svg{
+  display: none;
+}
+.dropdown-menu{
+  text-align: right;
+}
+
+[lang = en] .dropdown-menu{
+  text-align: left;
+}
+
+/* Product Card Styles - Checkbox Hack leverages style.min.css */
+/* No custom overrides needed if HTML structure matches exactly */

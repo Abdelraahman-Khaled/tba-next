@@ -2,13 +2,12 @@ import React from 'react';
 import Link from 'next/link';
 
 const AboutSection = ({ t, lang }) => {
-    const isRTL = lang === 'ar';
 
     return (
-        <section id="about" className="border-bottom-0">
+        <section id="about" className="border-bottom-0" >
             <div className="container">
                 <div className="row gx-5 align-items-center">
-                    <div className={`col-lg-6 mb-4 mb-md-0 ${!isRTL ? 'order-lg-2' : ''}`}>
+                    <div className={`col-lg-6 mb-4 mb-md-0`}>
                         <div className="row g-4">
                             <div className="col-6">
                                 <div style={{ padding: '177.78% 0 0 0', position: 'relative' }}>
@@ -22,7 +21,7 @@ const AboutSection = ({ t, lang }) => {
                                     ></iframe>
                                 </div>
                             </div>
-                            <div className="col-6">
+                            <div className="col-6 text-end">
                                 <div style={{ padding: '177.78% 0 0 0', position: 'relative' }}>
                                     <iframe
                                         src="https://player.vimeo.com/video/1110684673?background=1&autoplay=1&loop=1&muted=1"
@@ -37,12 +36,10 @@ const AboutSection = ({ t, lang }) => {
                         </div>
                     </div>
 
-                    <div className="col-lg-6">
-                        <h1>{t.about.title}</h1>
+                    <div className={`col-lg-6 text-${lang === 'ar' ? 'end' : 'start'}`} dir='ltr'>
+                        <h1 dangerouslySetInnerHTML={{ __html: t.about.title }}></h1>
                         <div className="spacer-half"></div>
-                        <p className="lead">
-                            {t.about.description}
-                        </p>
+                        <p className="lead" dangerouslySetInnerHTML={{ __html: t.about.description }}></p>
                         <Link href="/about" className="btn-line">
                             {t.about.readMore}
                         </Link>

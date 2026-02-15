@@ -102,9 +102,7 @@ body {
 	background: #606060;
 }
 
-[dir =  ltr] {
-	font-family: var(--body-font-en) !important;
-}
+
 
 body.de_light {
 	color: var(--body-font-color);
@@ -1765,11 +1763,11 @@ h3.s2 {
 }
 
 h5.uptitle {
-	font-family: var(--body-font-color);
+	font-family: var(--body-font-color) !important;
 	font-size: 14px;
 	text-transform: uppercase;
-	letter-spacing: 0.5em;
-	color: var(--primary-color);
+	letter-spacing: 0.5em !important;
+	color: var(--primary-color) !important;
 }
 
 img.s2 {
@@ -2513,7 +2511,7 @@ span.teaser {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 30px;
-	justify-content: end;
+	justify-content: start;
 }
 .social-icons i {
 	text-shadow: none;
@@ -3623,6 +3621,9 @@ object {
 	justify-content: end;
 	align-items: end;
 	text-align: right;
+}
+[lang="en"] .wahed-row .box {
+	text-align: left;
 }
 .wahed-row .box img {
 	width: 100px;
@@ -6484,9 +6485,12 @@ i.icon-big {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	justify-content: flex-start;
+    justify-content: flex-end;
 	gap: 30px;
 	margin-top: 60px;
+}
+[lang = "en"] .about-us-footer{
+    justify-content: flex-start;
 }
 
 .popup-video {

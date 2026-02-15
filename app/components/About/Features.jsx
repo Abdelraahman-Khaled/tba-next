@@ -5,7 +5,7 @@ const Features = ({ t, lang }) => {
     return (
         <section>
             <div className="container">
-                <div className="row bb gx-5 gy-4 text-center">
+                <div className="row bb gx-5 gy-4 text-center" dir={isRTL ? 'rtl' : 'ltr'}>
                     <div className="col-lg-4">
                         <img src="/images/misc/1st-place.webp" alt={t.aboutPage.feature1.title} />
                         <div className="spacer-single"></div>
