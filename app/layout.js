@@ -1,4 +1,10 @@
-import { Geist, Geist_Mono, Tajawal, Plus_Jakarta_Sans, Marcellus } from "next/font/google"; // Import fonts
+import {
+  Geist,
+  Geist_Mono,
+  Tajawal,
+  Plus_Jakarta_Sans,
+  Marcellus,
+} from "next/font/google"; // Import fonts
 import Script from "next/script";
 import "./globals.css";
 import Header from "./components/Header";
@@ -8,7 +14,6 @@ import { cookies } from "next/headers";
 import Providers from "./components/QueryClientProvider";
 import ClientScripts from "./components/ClientScripts";
 import ScrollToTop from "./components/ScrollToTop";
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,11 +45,11 @@ const marcellus = Marcellus({
 
 export async function generateMetadata() {
   const cookieStore = await cookies();
-  const lang = cookieStore.get('language')?.value || 'ar';
-  const isArabic = lang === 'ar';
+  const lang = cookieStore.get("language")?.value || "ar";
+  const isArabic = lang === "ar";
 
   const metadata = {
-    title: isArabic 
+    title: isArabic
       ? "شركة قمة الماركات العربية للتجارة tba"
       : "Tob brands Arabian trading co",
     description: isArabic
@@ -53,7 +58,7 @@ export async function generateMetadata() {
     keywords: "",
     authors: [{ name: "شركة قمة الماركات العربية للتجارة TBA" }],
     openGraph: {
-      title: isArabic 
+      title: isArabic
         ? "شركة قمة الماركات العربية للتجارة TBA"
         : "Tob brands Arabian trading co",
       description: isArabic
@@ -65,7 +70,7 @@ export async function generateMetadata() {
     },
     twitter: {
       card: "summary_large_image",
-      title: isArabic 
+      title: isArabic
         ? "شركة قمة الماركات العربية للتجارة TBA"
         : "Tob brands Arabian trading co",
       description: isArabic
@@ -83,15 +88,33 @@ export async function generateMetadata() {
 
 export default async function RootLayout({ children }) {
   const cookieStore = await cookies();
-  const initialLang = cookieStore.get('language')?.value || 'ar';
+  const initialLang = cookieStore.get("language")?.value || "ar";
 
-  const isRTL = initialLang === 'ar';
+  const isRTL = initialLang === "ar";
 
   return (
-    <html lang={initialLang} dir={initialLang === 'ar' ? "ltr" : "rtl"} suppressHydrationWarning style={{overflow:"unset !important"}}>
+    <html
+      lang={initialLang}
+      dir={initialLang === "ar" ? "ltr" : "rtl"}
+      suppressHydrationWarning
+      style={{ overflow: "unset !important" }}
+    >
       <head>
         <link rel="icon" href="/images/logo.ico" type="image/x-icon" />
         <link rel="stylesheet" href="/css/style.min.css" />
+
+        {/* Google Tag Manager */}
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-K6ZHJW5N');
+          `}
+        </Script>
+        {/* End Google Tag Manager */}
+
         {/* <link rel="stylesheet" href="/css/ar-style.min.css" /> */}
         <link rel="stylesheet" href="/css/coloring.min.css" />
         <link rel="stylesheet" href="/css/colors/cream.min.css" />
@@ -104,84 +127,100 @@ export default async function RootLayout({ children }) {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": isRTL ? "شركة قمة الماركات العربية للتجارة" : "Tob Brands Arabian Trading Co",
-              "alternateName": isRTL ? "Tob Brands Arabian Trading Co" : "شركة قمة الماركات العربية للتجارة",
-              "url": isRTL ? "https://tba.sa/" : "https://tba.sa/en/",
-              "logo": "https://tba.sa/images/logo-2.webp",
-              "description": isRTL 
+              name: isRTL
+                ? "شركة قمة الماركات العربية للتجارة"
+                : "Tob Brands Arabian Trading Co",
+              alternateName: isRTL
+                ? "Tob Brands Arabian Trading Co"
+                : "شركة قمة الماركات العربية للتجارة",
+              url: isRTL ? "https://tba.sa/" : "https://tba.sa/en/",
+              logo: "https://tba.sa/images/logo-2.webp",
+              description: isRTL
                 ? "شركة سعودية متخصصة في استيراد وتوزيع المواد الغذائية الفاخرة من أشهر العلامات التجارية العالمية."
                 : "TBA is a Saudi company importing premium food products from the world's finest brands.",
-              "address": {
+              address: {
                 "@type": "PostalAddress",
-                "streetAddress": isRTL ? "الملك فهد" : "King Fahd",
-                "addressLocality": isRTL ? "الرياض" : "Riyadh",
-                "postalCode": "14715",
-                "addressCountry": "SA"
+                streetAddress: isRTL ? "الملك فهد" : "King Fahd",
+                addressLocality: isRTL ? "الرياض" : "Riyadh",
+                postalCode: "14715",
+                addressCountry: "SA",
               },
-              "areaServed": "SA",
-              "hasOfferCatalog": {
+              areaServed: "SA",
+              hasOfferCatalog: {
                 "@type": "OfferCatalog",
-                "name": isRTL ? "خدمات شركة TBA" : "TBA Services",
-                "itemListElement": [
+                name: isRTL ? "خدمات شركة TBA" : "TBA Services",
+                itemListElement: [
                   {
                     "@type": "Offer",
-                    "itemOffered": {
+                    itemOffered: {
                       "@type": "Service",
-                      "name": isRTL 
+                      name: isRTL
                         ? "استيراد وتوزيع القهوة والشوكولاتة الفاخرة"
-                        : "Import and distribution of luxury coffee and chocolate"
-                    }
+                        : "Import and distribution of luxury coffee and chocolate",
+                    },
                   },
                   {
                     "@type": "Offer",
-                    "itemOffered": {
+                    itemOffered: {
                       "@type": "Service",
-                      "name": isRTL 
+                      name: isRTL
                         ? "توزيع المواد الغذائية الفاخرة"
-                        : "Luxury food distribution"
-                    }
+                        : "Luxury food distribution",
+                    },
                   },
                   {
                     "@type": "Offer",
-                    "itemOffered": {
+                    itemOffered: {
                       "@type": "Service",
-                      "name": isRTL 
+                      name: isRTL
                         ? "حلول شاملة للتوزيع"
-                        : "Comprehensive Distribution Solutions"
-                    }
-                  }
-                ]
-              }
-            })
+                        : "Comprehensive Distribution Solutions",
+                    },
+                  },
+                ],
+              },
+            }),
           }}
         />
-
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${tajawal.variable} ${plusJakartaSans.variable} ${marcellus.variable} dark-scheme vw-100 overflow-x-hidden`} suppressHydrationWarning>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${tajawal.variable} ${plusJakartaSans.variable} ${marcellus.variable} dark-scheme vw-100 overflow-x-hidden`}
+        suppressHydrationWarning
+      >
+        {/* <!-- Google Tag Manager (noscript) --> */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-K6ZHJW5N"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
+        {/* <!-- End Google Tag Manager (noscript) --> */}
+
         <LanguageProvider initialLang={initialLang}>
           <Providers>
             <div id="wrapper" className="position-relative">
               <div className="shape shape-1"></div>
               <div className="shape shape-2"></div>
-              <Header /> 
+              <Header />
               {children}
               <Footer />
 
-              <ScrollToTop/>
-
+              <ScrollToTop />
             </div>
           </Providers>
         </LanguageProvider>
         <script src="/js/plugins.js"></script>
         <script src="/js/designesia.js"></script>
         <script src="/js/custom-swiper.js"></script>
-        
+
         {/* External CDN Scripts */}
-        <Script 
-          src="https://player.vimeo.com/api/player.js" 
+        <Script
+          src="https://player.vimeo.com/api/player.js"
           strategy="lazyOnload"
         />
-        
+
         {/* Client-side scripts for Swiper, carousel cloning, and CSS fallback */}
         <ClientScripts />
       </body>
