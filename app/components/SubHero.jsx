@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
-const SubHero = ({ title, headerSubtitle = subtitle || "", subtitle, bgImage, bgImageAlt, breadcrumbs }) => {
+const SubHero = ({ title, headerSubtitle = subtitle || "", subtitle, bgImage, bgImageAlt, breadcrumbs, details }) => {
     const { t, lang } = useLanguage();
     const isRTL = lang === 'ar';
 
@@ -26,7 +26,7 @@ const SubHero = ({ title, headerSubtitle = subtitle || "", subtitle, bgImage, bg
 
     return (
         <section id="subheader" className="jarallax text-light" suppressHydrationWarning >
-            <img src={bgImage} className="jarallax-img" alt={bgImageAlt || title} />
+            <img src={bgImage} className="jarallax-img object-top" alt={bgImageAlt || title} style={{ objectPosition: "center top" }} />
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12">
@@ -52,11 +52,29 @@ const SubHero = ({ title, headerSubtitle = subtitle || "", subtitle, bgImage, bg
                             !isRTL ? (
                                 <div className="d-flex" dir='ltr'>
                                     <li className="breadcrumb-item"><a href="/">{t.nav.home}</a></li>
-                                    <li className="breadcrumb-item active" aria-current="page">{subtitle}</li>
+                                    {
+                                        details ? (
+                                            <>
+                                                <li className="breadcrumb-item active" aria-current="page"><a href={details.link}>{subtitle}</a></li>
+                                                <li className="breadcrumb-item">{details.label}</li>
+                                            </>
+                                        ) : (
+                                            <li className="breadcrumb-item active" aria-current="page">{subtitle}</li>
+                                        )
+                                    }
                                 </div>
                             ) : (
                                 <>
-                                    <li className="breadcrumb-item active" aria-current="page">{subtitle}</li>
+                                    {
+                                        details ? (
+                                            <>
+                                                <li className="breadcrumb-item">{details.label}</li>
+                                                <li className="breadcrumb-item active" aria-current="page"><a href={details.link}>{subtitle}</a></li>
+                                            </>
+                                        ) : (
+                                            <li className="breadcrumb-item active" aria-current="page">{subtitle}</li>
+                                        )
+                                    }
                                     <li className="breadcrumb-item"><a href="/">{t.nav.home}</a></li>
                                 </>
                             )

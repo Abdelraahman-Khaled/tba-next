@@ -21,9 +21,9 @@ const ContactInfo = () => {
                 {/* Contact Info Box Start */}
                 <div className="contact-info-box-2">
                     {/* Contact Info Item Start */}
-                    <div className={`contact-info-item ${isRTL ? 'flex-row-reverse' : ''}`}>
+                    <div className={`contact-info-item flex-row-reverse`}>
                         {/* Icon Box Start */}
-                        <div className="icon-box">
+                        <div className="icon-box" >
                             <img src="/images/icon-location-accent.svg" alt="Location" />
                         </div>
                         {/* Icon Box End */}

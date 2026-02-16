@@ -6757,7 +6757,7 @@ i.icon-big {
 .accordion-item {
 	border: none;
 }
-[dir = ltr] .accordion-collapse {
+[langg = "en"] .accordion-collapse {
 	text-align: left !important;
 }
 .accordion-item,

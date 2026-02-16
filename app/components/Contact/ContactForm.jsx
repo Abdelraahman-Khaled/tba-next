@@ -64,11 +64,11 @@ const ContactForm = () => {
 
     return (
         <>
-            <div className={`contact-us-form ${isRTL ? 'text-end' : ''}`}>
+            <div className={`contact-us-form`} dir={isRTL ? 'rtl' : 'ltr'} >
                 {/* Contact Form Content Start */}
                 <div className="contact-form-content">
                     <h3>{t.contact.form.title}</h3>
-                    <p dir={isRTL ? 'rtl' : 'ltr'}>
+                    <p>
                         {t.contact.form.subtitle}
                     </p>
                 </div>
@@ -118,7 +118,7 @@ const ContactForm = () => {
                                 <textarea
                                     name="message"
                                     id="message"
-                                    dir={isRTL ? 'rtl' : 'ltr'}
+
                                     className="form-control"
                                     rows="3"
                                     placeholder={t.contact.form.messagePlaceholder}
@@ -141,28 +141,30 @@ const ContactForm = () => {
                     </form>
                 </div>
                 {/* Contact Form End */}
-            </div>
+            </div >
 
             {/* Success Popup */}
-            {showPopup && (
-                <div
-                    className="overlay-pop"
-                    id="overlay-pop"
-                    style={{ display: 'flex' }}
-                    onClick={closePopup}
-                >
-                    <div className="pop-up">
-                        <div className="msg">
-                            <div>
-                                <h2>{t.contact.form.successTitle}</h2>
-                            </div>
-                            <div>
-                                <img src="/images/message.gif" alt="Success" />
+            {
+                showPopup && (
+                    <div
+                        className="overlay-pop"
+                        id="overlay-pop"
+                        style={{ display: 'flex' }}
+                        onClick={closePopup}
+                    >
+                        <div className="pop-up">
+                            <div className="msg">
+                                <div>
+                                    <h2>{t.contact.form.successTitle}</h2>
+                                </div>
+                                <div>
+                                    <img src="/images/message.gif" alt="Success" />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            )}
+                )
+            }
         </>
     );
 };

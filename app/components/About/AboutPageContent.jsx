@@ -33,6 +33,7 @@ const AboutPageContent = () => {
             <SubHero
                 title={t.aboutPage.title}
                 subtitle={t.aboutPage.subtitle}
+                headerSubtitle={t.aboutPage.subtitle}
                 bgImage="/images/bg-3.webp"
                 bgImageAlt={t.aboutPage.images?.subhero}
             />

@@ -20,7 +20,10 @@ const BlogsPage = () => {
     if (isLoading) {
         return (
             <div id="content" className="no-bottom no-top">
-                <SubHero title={t.nav.blogs} headerSubtitle={t.blogs.subtitle} subtitle={t.blogs.subtitle} bgImage="/images/blogpage.webp" />
+                <SubHero title={t.blogs.title}
+                    headerSubtitle={t.blogs.headerSubtitle}
+                    subtitle={t.nav.blogs}
+                    bgImage="/images/blogpage.webp" />
                 <section className="bg-coffee">
                     <div className="container text-center py-5">
                         <div className="spinner-border text-light" role="status">
@@ -35,7 +38,10 @@ const BlogsPage = () => {
     if (error) {
         return (
             <div id="content" className="no-bottom no-top">
-                <SubHero title={t.nav.blogs} subtitle={t.blogs.subtitle} bgImage="/images/blogpage.webp" />
+                <SubHero title={t.blogs.title}
+                    headerSubtitle={t.blogs.headerSubtitle}
+                    subtitle={t.nav.blogs}
+                    bgImage="/images/blogpage.webp" />
                 <section className="bg-coffee">
                     <div className="container text-center py-5">
                         <h3 className="text-light">Error loading blogs. Please try again later.</h3>
@@ -48,8 +54,9 @@ const BlogsPage = () => {
     return (
         <div id="content" className={`no-bottom no-top ${isRTL ? 'text-end' : ''}`}>
             <SubHero
-                title={t.nav.blogs}
-                subtitle={t.blogs.subtitle}
+                title={t.blogs.title}
+                headerSubtitle={t.blogs.headerSubtitle}
+                subtitle={t.nav.blogs}
                 bgImage="/images/blogpage.webp"
             />
 

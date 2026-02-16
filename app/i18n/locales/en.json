@@ -113,7 +113,8 @@
     }
   },
   "blogs": {
-    "title": "Blogs",
+    "title": "Latest Articles",
+    "headerSubtitle": "Blogs",
     "subtitle": "Latest Articles",
     "items": [
       {
@@ -168,6 +169,18 @@
       "button": "Contact us"
     }
   },
+  "faqsPage": {
+    "seo": {
+      "title": "FAQs - Top Brands Arabian Trading Co.",
+      "description": "Find answers to common questions about Top Brands Arabian Trading Co., our products, distribution services, and more."
+    }
+  },
+  "contactPage": {
+    "seo": {
+      "title": "Contact Us - Top Brands Arabian Trading Co.",
+      "description": "Get in touch with Top Brands Arabian Trading Co. for inquiries about our products, distribution services, or partnerships."
+    }
+  },
   "contact": {
     "title": "Contact us",
     "subtitle": "Get in touch",
@@ -183,7 +196,7 @@
       "successTitle": "Message Sent Successfully"
     },
     "info": {
-      "desc": "We are happy to hear from you! Whether you have questions, need support, or want to discuss a project, feel free to contact us.",
+      "desc": "We'd love to hear from you! Whether you have questions, need support, or want to discuss a project, please feel free to reach out.",
       "addressTitle": "Address",
       "addressContent": "King Fahd, Riyadh, Saudi Arabia 14715"
     }

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
 
 export async function POST(request) {
     try {
@@ -28,12 +29,34 @@ export async function POST(request) {
             );
         }
 
-        // Here you would typically:
-        // 1. Save to database
-        // 2. Send email notification
-        // 3. Integrate with CRM
-        // For now, we'll just log and return success
-        console.log('Contact form submission:', { fname, phone, email, message });
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS,
+            },
+        });
+
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: 'abdelrahamankhaled633@gmail.com',
+            subject: `New Contact Form Submission from ${fname}`,
+            text: `
+                Name: ${fname}
+                Phone: ${phone}
+                Email: ${email}
+                Message: ${message}
+            `,
+            html: `
+                <h3>New Contact Form Submission</h3>
+                <p><strong>Name:</strong> ${fname}</p>
+                <p><strong>Phone:</strong> ${phone}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Message:</strong> ${message}</p>
+            `,
+        };
+
+        await transporter.sendMail(mailOptions);
 
         return NextResponse.json(
             { 
@@ -45,9 +68,9 @@ export async function POST(request) {
     } catch (error) {
         console.error('Contact form error:', error);
         return NextResponse.json(
-            { 
+             { 
                 status: 'error', 
-                message: 'حدث خطأ أثناء معالجة طلبك' 
+                message: 'حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة لاحقاً.' 
             },
             { status: 500 }
         );

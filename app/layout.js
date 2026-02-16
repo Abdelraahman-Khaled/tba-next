@@ -7,7 +7,6 @@ import { LanguageProvider } from "./context/LanguageContext";
 import { cookies } from "next/headers";
 import Providers from "./components/QueryClientProvider";
 import ClientScripts from "./components/ClientScripts";
-import Preloader from "./components/Preloader";
 import ScrollToTop from "./components/ScrollToTop";
 
 
@@ -168,8 +167,7 @@ export default async function RootLayout({ children }) {
               {children}
               <Footer />
 
-             <Preloader/>
-             <ScrollToTop/>
+              <ScrollToTop/>
 
             </div>
           </Providers>

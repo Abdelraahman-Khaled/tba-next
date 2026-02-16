@@ -10,6 +10,85 @@
   }
 }
 
+/* FAQ Accordion Dark Theme Overrides & Smooth Transition */
+.faq-accordion .accordion-item {
+    background-color: transparent;
+    margin-bottom: 10px;
+    border-radius: 5px !important;
+    overflow: hidden;
+}
+
+.faq-accordion .accordion-button {
+    background-color: transparent !important; /* Force transparent */
+    box-shadow: none !important; /* Remove focus shadow */
+    font-weight: 600;
+}
+
+.faq-accordion .accordion-button:not(.collapsed) {
+    color: #fff; /* Keep text white */
+}
+
+/* Smooth Accordion Transition Fix */
+.faq-accordion .accordion-collapse {
+    display: grid !important; /* Force grid layout for transition */
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease-out;
+    visibility: visible !important; /* Override Bootstrap visibility hidden */
+    height: auto !important; /* Override Bootstrap height: 0 */
+}
+
+/* When expanded (has 'show' class or similar logic) */
+.faq-accordion .accordion-collapse.show {
+    grid-template-rows: 1fr;
+    display: grid !important; /* Ensure it stays grid */
+}
+
+.faq-accordion .accordion-body {
+    color: rgba(255, 255, 255, 0.8);
+    background-color: transparent;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* Crucial for grid transition */
+    min-height: 0;
+    overflow: hidden;
+    padding-top: 0; /* Animate padding if needed, or keep static */
+    padding-bottom: 0;
+    transition: padding 0.3s ease-out, opacity 0.3s ease-out;
+    opacity: 0;
+}
+
+.faq-accordion .accordion-collapse.show .accordion-body {
+    padding-top: 1rem; /* Restore Bootstrap padding */
+    padding-bottom: 1rem;
+    opacity: 1;
+}
+
+/* Fix Accordion Arrow Color (match brand color #997173) */
+.faq-accordion .accordion-button {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    text-align: inherit; /* Allow text-start/text-end classes to work */
+}
+
+.faq-accordion .accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23997173'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+    filter: none !important;
+    /* Remove Bootstrap's auto margin to allow justify-content: space-between to work */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.faq-accordion .accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23997173'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+    transform: rotate(-180deg);
+}
+
+/* Ensure no white background leaks through */
+.faq-accordion .accordion-header {
+    margin-bottom: 0;
+}
+
 
 
 html,
@@ -97,12 +176,12 @@ h5.uptitle,
   margin-bottom: 1rem;
 }
 
-.accordion-item:first-of-type .accordion-button{
-  direction: ltr;
+.accordion-item .accordion-button{
+  direction: rtl;
 }
 
-[dir= ltr] .accordion-item:first-of-type .accordion-button{
-direction: rtl;
+[lang = "en"] .accordion-item .accordion-button{
+direction: ltr;
 }
 
 /* Fix Progress Circle Visibility */
@@ -121,7 +200,7 @@ direction: rtl;
   display: none;
 }
 .dropdown-menu{
-  text-align: right;
+  text-align: right !important;
 }
 
 [lang = en] .dropdown-menu{
@@ -130,3 +209,26 @@ direction: rtl;
 
 /* Product Card Styles - Checkbox Hack leverages style.min.css */
 /* No custom overrides needed if HTML structure matches exactly */
+
+/* Contact Form RTL Fixes */
+[lang="ar"] .contact-us-form,
+[lang="ar"] .contact-form-content,
+[lang="ar"] .contact-form {
+    text-align: right;
+    direction: ar;
+}
+
+[lang="ar"] .contact-us-form .form-control {
+    text-align: right;
+    direction: ar;
+}
+
+[lang="ar"] .contact-us-form .contact-form-btn {
+    text-align: right;
+}
+
+/* Fix specific spacing/margins if needed */
+[lang="ar"] .contact-us-form h3,
+[lang="ar"] .contact-us-form p {
+    text-align: right;
+}

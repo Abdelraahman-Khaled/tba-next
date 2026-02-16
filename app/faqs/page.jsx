@@ -1,83 +1,28 @@
-'use client';
-
 import React from 'react';
-import SubHero from '../components/SubHero';
-import { faqs } from '../data/faqs';
-import { useLanguage } from '../context/LanguageContext';
+import { cookies } from 'next/headers';
+import FAQsPageContent from '../components/FAQs/FAQsPageContent';
+import enTranslations from '../i18n/locales/en.json';
+import arTranslations from '../i18n/locales/ar.json';
+
+export async function generateMetadata() {
+    const cookieStore = await cookies();
+    const lang = cookieStore.get('language')?.value || 'ar';
+    const t = lang === 'ar' ? arTranslations : enTranslations;
+
+    // Use faqsPage seo if available, fallback to hardcoded or other
+    const seo = t.faqsPage?.seo || {
+        title: t.nav.faqs,
+        description: t.nav.faqs
+    };
+
+    return {
+        title: seo.title,
+        description: seo.description,
+    };
+}
 
 const FAQsPage = () => {
-    const { t, lang } = useLanguage();
-    const isRTL = lang === 'ar';
-
-    return (
-        <div id="content" className={`no-bottom no-top ${isRTL ? 'text-end' : ''}`} suppressHydrationWarning>
-            <SubHero
-                title={t.nav.faqs}
-                subtitle={t.nav.faqs}
-                bgImage="/images/faqspage.webp"
-                breadcrumbs={[
-                    { label: t.nav.faqs },
-                    { label: t.nav.home, link: '/' }
-                ].reverse()}
-            />
-
-            <section className="bg-coffee">
-                <div className="page-faqs">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-12">
-                                <div className="page-faqs-category">
-                                    <div className="faq-accordion page-faq-accordion" id="coffee_brewing">
-                                        <div className="section-title">
-                                            <h2 className="mb-5 text-center">
-                                                {t.nav.faqs}
-                                            </h2>
-                                        </div>
-
-                                        <div className="faq-accordion" id="accordion">
-                                            {faqs.map((faq, index) => {
-                                                const question = isRTL ? faq.question : (faq.question_en || faq.question);
-                                                const answer = isRTL ? faq.answer : (faq.answer_en || faq.answer);
-
-                                                return (
-                                                    <div key={faq.id} className="accordion-item">
-                                                        <h2 className="accordion-header" id={`heading${faq.id}`}>
-                                                            <button
-                                                                className={`accordion-button ${index !== 0 ? 'collapsed' : ''} ${isRTL ? 'text-end' : 'text-start'}`}
-                                                                type="button"
-                                                                data-bs-toggle="collapse"
-                                                                data-bs-target={`#collapse${faq.id}`}
-                                                                aria-expanded={index === 0 ? 'true' : 'false'}
-                                                                aria-controls={`collapse${faq.id}`}
-                                                            >
-                                                                {question}
-                                                            </button>
-                                                        </h2>
-                                                        <div
-                                                            id={`collapse${faq.id}`}
-                                                            className={`accordion-collapse collapse ${index === 0 ? 'show' : ''}`}
-                                                            aria-labelledby={`heading${faq.id}`}
-                                                            data-bs-parent="#accordion"
-                                                        >
-                                                            <div className="accordion-body">
-                                                                <p dir={isRTL ? 'rtl' : 'ltr'}>
-                                                                    {answer}
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                );
-                                            })}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    );
+    return <FAQsPageContent />;
 };
 
 export default FAQsPage;
