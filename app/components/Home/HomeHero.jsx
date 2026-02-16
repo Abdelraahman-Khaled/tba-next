@@ -11,7 +11,7 @@ const HomeHero = () => {
                 muted
                 loop
                 playsInline
-                preload="metadata"
+                preload="auto"
             ></video>
         </section>
     );

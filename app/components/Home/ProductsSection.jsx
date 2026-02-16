@@ -1,6 +1,11 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const ProductsSection = ({ t, lang }) => {
     const isRTL = lang === 'ar';
@@ -14,48 +19,6 @@ const ProductsSection = ({ t, lang }) => {
         { id: 5, image: '/images/products/5.webp', altAr: 'موزع أغذية بالرياض', altEn: 'Coffee' },
     ];
 
-    useEffect(() => {
-        // Small delay to ensure DOM elements are fully rendered
-        const timer = setTimeout(() => {
-            if (typeof window !== 'undefined' && window.Swiper) {
-                const swiper = new window.Swiper('.product-carousel', {
-                    slidesPerView: 1,
-                    spaceBetween: 30,
-                    loop: true,
-                    autoplay: {
-                        delay: 3000,
-                        disableOnInteraction: false,
-                    },
-                    pagination: {
-                        el: '.product-carousel .swiper-pagination',
-                        clickable: true,
-                    },
-                    navigation: {
-                        nextEl: '.product-carousel .swiper-button-next',
-                        prevEl: '.product-carousel .swiper-button-prev',
-                    },
-                    breakpoints: {
-                        640: {
-                            slidesPerView: 2,
-                        },
-                        768: {
-                            slidesPerView: 3,
-                        },
-                        1024: {
-                            slidesPerView: 4,
-                        },
-                    },
-                });
-
-                return () => {
-                    if (swiper) swiper.destroy(true, true);
-                };
-            }
-        }, 100);
-
-        return () => clearTimeout(timer);
-    }, []);
-
     return (
         <section id="store" className="h1-product-section border-bottom-0">
             <div className="container">
@@ -66,10 +29,40 @@ const ProductsSection = ({ t, lang }) => {
                     </p>
                     <div className="spacer-single"></div>
                 </div>
-                <div className="product-carousel swiper">
-                    <div className="swiper-wrapper">
+                <div className="product-carousel-wrapper">
+                    <Swiper
+                        modules={[Navigation, Pagination, Autoplay]}
+                        spaceBetween={30}
+                        slidesPerView={1}
+                        loop={true}
+                        autoplay={{
+                            delay: 3000,
+                            disableOnInteraction: false,
+                        }}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        breakpoints={{
+                            640: {
+                                slidesPerView: 2,
+                            },
+                            768: {
+                                slidesPerView: 3,
+                            },
+                            1024: {
+                                slidesPerView: 4,
+                            },
+                        }}
+                        dir={isRTL ? 'rtl' : 'ltr'}
+                        key={lang} // Force re-render on language change
+                        className="product-carousel"
+                        navigation={{
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        }}
+                    >
                         {products.map((product) => (
-                            <div className="swiper-slide" key={product.id}>
+                            <SwiperSlide key={product.id}>
                                 <div className="product">
                                     <div className="product-thumb">
                                         <a href="https://storetba.com/" className="product-image" target="_blank" rel="noopener noreferrer">
@@ -77,12 +70,12 @@ const ProductsSection = ({ t, lang }) => {
                                         </a>
                                     </div>
                                 </div>
-                            </div>
+                            </SwiperSlide>
                         ))}
-                    </div>
-                    <div className="swiper-pagination d-md-none"></div>
-                    <div className="swiper-button-prev d-none d-md-flex"></div>
-                    <div className="swiper-button-next d-none d-md-flex"></div>
+                        <div className="swiper-pagination d-md-none"></div>
+                        <div className="swiper-button-prev d-none d-md-flex"></div>
+                        <div className="swiper-button-next d-none d-md-flex"></div>
+                    </Swiper>
                 </div>
             </div>
         </section>

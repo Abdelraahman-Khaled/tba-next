@@ -10,7 +10,7 @@ const BlogsSection = ({ t, lang }) => {
     const { data: blogs } = useQuery({
         queryKey: ['blogs'],
         queryFn: getBlogs,
-        staleTime: 1000 * 60 * 5, // 5 minutes
+        staleTime: 5 * 60 * 1000, // 5 minutes
     });
 
     // Take only the first 2 blogs for the home page

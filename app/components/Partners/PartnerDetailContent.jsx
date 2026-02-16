@@ -60,7 +60,7 @@ const PartnerDetailContent = ({ partner }) => {
         <>
             {partner.video ? (
                 <section id="subheader" className="jarallax text-light">
-                    <video src={partner.video} autoPlay loop muted playsInline className="jarallax-img"></video>
+                    <video src={partner.video} autoPlay loop muted playsInline preload="auto" className="jarallax-img"></video>
                 </section>
             ) : (
                 <>
