@@ -1,13 +1,23 @@
 services:
-  tba-next:
-    container_name: tba-next
+  web:
     build:
       context: .
       dockerfile: Dockerfile
+      # These build args are REQUIRED at build time for Next.js
+      # NEXT_PUBLIC_* variables are inlined into the JavaScript bundle
+      args:
+        - NEXT_PUBLIC_BASE_URL=${NEXT_PUBLIC_BASE_URL}
+        - EMAIL_USER=${EMAIL_USER}
+        - EMAIL_PASS=${EMAIL_PASS}
+    container_name: tba-next
     restart: always
     ports:
       - "9104:3000"
-    env_file:
-      - .env
+    # Optional: Use .env file if deploying locally
+    # env_file:
+    #   - .env
     environment:
       - NODE_ENV=production
+      - NEXT_PUBLIC_BASE_URL=${NEXT_PUBLIC_BASE_URL}
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASS=${EMAIL_PASS}

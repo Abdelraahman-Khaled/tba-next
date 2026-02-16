@@ -211,9 +211,9 @@ export default async function RootLayout({ children }) {
             </div>
           </Providers>
         </LanguageProvider>
-        <script src="/js/plugins.js"></script>
-        <script src="/js/designesia.js"></script>
-        <script src="/js/custom-swiper.js"></script>
+        <Script src="/js/plugins.js" strategy="afterInteractive" />
+        <Script src="/js/designesia.js" strategy="afterInteractive" />
+        <Script src="/js/custom-swiper.js" strategy="afterInteractive" />
 
         {/* External CDN Scripts */}
         <Script

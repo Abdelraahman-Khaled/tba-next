@@ -41,6 +41,7 @@ const BlogDetailContent = ({ blog: initialBlog, isRTL, slug, t }) => {
             setActiveAccordion(blog.faqs[0].id);
             isInitialized.current = true;
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [blog]);
 
     const toggleAccordion = (id) => {

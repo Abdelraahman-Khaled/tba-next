@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { useLanguage } from '../context/LanguageContext';
+import Link from 'next/link';
 
 const SubHero = ({ title, headerSubtitle = subtitle || "", subtitle, bgImage, bgImageAlt, breadcrumbs, details }) => {
     const { t, lang } = useLanguage();
@@ -45,17 +45,17 @@ const SubHero = ({ title, headerSubtitle = subtitle || "", subtitle, bgImage, bg
                                     className={`breadcrumb-item ${index === breadcrumbs.length - 1 ? 'active' : ''}`}
                                     aria-current={index === breadcrumbs.length - 1 ? 'page' : undefined}
                                 >
-                                    {crumb.link ? <a href={crumb.link}>{crumb.label}</a> : crumb.label}
+                                    {crumb.link ? <Link href={crumb.link}>{crumb.label}</Link> : crumb.label}
                                 </li>
                             ))
                         ) : (
                             !isRTL ? (
                                 <div className="d-flex" dir='ltr'>
-                                    <li className="breadcrumb-item"><a href="/">{t.nav.home}</a></li>
+                                    <li className="breadcrumb-item"><Link href="/">{t.nav.home}</Link></li>
                                     {
                                         details ? (
                                             <>
-                                                <li className="breadcrumb-item active" aria-current="page"><a href={details.link}>{subtitle}</a></li>
+                                                <li className="breadcrumb-item active" aria-current="page"><Link href={details.link}>{subtitle}</Link></li>
                                                 <li className="breadcrumb-item">{details.label}</li>
                                             </>
                                         ) : (
@@ -69,13 +69,13 @@ const SubHero = ({ title, headerSubtitle = subtitle || "", subtitle, bgImage, bg
                                         details ? (
                                             <>
                                                 <li className="breadcrumb-item">{details.label}</li>
-                                                <li className="breadcrumb-item active" aria-current="page"><a href={details.link}>{subtitle}</a></li>
+                                                <li className="breadcrumb-item active" aria-current="page"><Link href={details.link}>{subtitle}</Link></li>
                                             </>
                                         ) : (
                                             <li className="breadcrumb-item active" aria-current="page">{subtitle}</li>
                                         )
                                     }
-                                    <li className="breadcrumb-item"><a href="/">{t.nav.home}</a></li>
+                                    <li className="breadcrumb-item"><Link href="/">{t.nav.home}</Link></li>
                                 </>
                             )
                         )}
