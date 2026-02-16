@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import Link from 'next/link';
+import { useLanguage } from '../context/LanguageContext';
 
 const SubHero = ({ title, headerSubtitle = subtitle || "", subtitle, bgImage, bgImageAlt, breadcrumbs, details }) => {
     const { t, lang } = useLanguage();
