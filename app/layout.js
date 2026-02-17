@@ -12,7 +12,6 @@ import Footer from "./components/Footer";
 import { LanguageProvider } from "./context/LanguageContext";
 import { cookies } from "next/headers";
 import Providers from "./components/QueryClientProvider";
-import ClientScripts from "./components/ClientScripts";
 import ScrollToTop from "./components/ScrollToTop";
 
 const geistSans = Geist({
@@ -221,8 +220,6 @@ export default async function RootLayout({ children }) {
           strategy="lazyOnload"
         />
 
-        {/* Client-side scripts for Swiper, carousel cloning, and CSS fallback */}
-        <ClientScripts />
       </body>
     </html>
   );
