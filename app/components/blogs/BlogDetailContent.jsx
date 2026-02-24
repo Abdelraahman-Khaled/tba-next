@@ -12,7 +12,7 @@ const BlogDetailContent = ({ blog: initialBlog, isRTL, slug, t }) => {
         queryKey: ['blog', slug],
         queryFn: () => getBlogDetails(slug),
         initialData: initialBlog,
-        refetchInterval: 1000,
+        refetchInterval: 5000,
     });
 
     useEffect(() => {
