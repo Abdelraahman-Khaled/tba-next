@@ -38,8 +38,14 @@ export async function POST(request) {
     });
 
     const mailOptions = {
-      from: "me",
-      to: "abodzoro10@gmail.com",
+      // التعديل الأول: التحكم في الاسم اللي بيظهر من بره
+      from: `"${fname} Contact Form" <${process.env.EMAIL_USER}>`,
+
+      to: "info@tba.sa",
+      // info@tba.sa
+      // التعديل التاني: إضافة الإيميل اللي الشركة هترد عليه
+      replyTo: email,
+
       subject: `New Contact Form Submission from ${fname}`,
       text: `
                 Name: ${fname}
