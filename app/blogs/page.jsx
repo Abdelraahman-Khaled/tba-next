@@ -64,7 +64,7 @@ const BlogsPage = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12 blog-list">
-                            {blogs?.map((blog, index) => {
+                            {[...blogs].reverse()?.map((blog, index) => {
                                 const title = isRTL ? blog.title_ar : blog.title_en;
                                 const description = isRTL ? blog.description_ar : blog.description_en;
 

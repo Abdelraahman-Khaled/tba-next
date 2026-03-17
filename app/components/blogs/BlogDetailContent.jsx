@@ -28,8 +28,8 @@ const BlogDetailContent = ({ blog: initialBlog, isRTL, slug, t }) => {
 
     // Find image based on language
 
-    const imageUrl = blog.landing_photo[0].url;
-    const imageAlt = isRTL ? blog.landing_photo[0].alt_ar : blog.landing_photo[0].alt_en;
+    const imageUrl = blog.landing_photo?.[0]?.url || '/images/blogpage.webp';
+    const imageAlt = isRTL ? (blog.landing_photo?.[0]?.alt_ar || title) : (blog.landing_photo?.[0]?.alt_en || title);
     console.log(blog);
 
     const [activeAccordion, setActiveAccordion] = useState(null);
@@ -71,12 +71,33 @@ const BlogDetailContent = ({ blog: initialBlog, isRTL, slug, t }) => {
                                     if (!item.is_published) return null;
                                     const sectionContent = isRTL ? item.content_ar : item.content_en;
                                     return (
-                                        <div
-                                            key={item.id}
-                                            className="post-text blog-content-rich mb-5"
-                                            dir={isRTL ? 'rtl' : 'ltr'}
-                                            dangerouslySetInnerHTML={{ __html: sectionContent }}
-                                        />
+                                        <div key={item.id} className="mb-5">
+                                            <div
+                                                className="post-text blog-content-rich"
+                                                dir={isRTL ? 'rtl' : 'ltr'}
+                                                dangerouslySetInnerHTML={{ __html: sectionContent }}
+                                            />
+                                            {item.photos && item.photos.length > 0 && (
+                                                <div className="row g-4 mt-4 justify-content-end">
+                                                    {item.photos.map((photo) => (
+                                                        <div className="col-12 col-md-6">
+                                                            <div className="post-image rounded-3 overflow-hidden shadow-sm">
+                                                                <img
+                                                                    src={photo.url}
+                                                                    alt={isRTL ? photo.alt_ar : photo.alt_en}
+                                                                    className="img-fluid w-100"
+                                                                    style={{
+                                                                        maxHeight: '600px',
+                                                                        objectFit: 'cover',
+                                                                        objectPosition: 'center'
+                                                                    }}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
                                     );
                                 })}
 
