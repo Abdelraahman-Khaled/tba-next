@@ -4,9 +4,8 @@ import ContactPageContent from '../components/Contact/ContactPageContent';
 import enTranslations from '../i18n/locales/en.json';
 import arTranslations from '../i18n/locales/ar.json';
 
-export async function generateMetadata() {
-    const cookieStore = await cookies();
-    const lang = cookieStore.get('language')?.value || 'ar';
+export async function generateMetadata({ params }) {
+    const { lang } = await params;
     const t = lang === 'ar' ? arTranslations : enTranslations;
 
     // Use contactPage seo if available, fallback to hardcoded or other
@@ -21,7 +20,7 @@ export async function generateMetadata() {
     };
 }
 
-const ContactPage = () => {
+const ContactPage = async ({ params }) => {
     return <ContactPageContent />;
 };
 

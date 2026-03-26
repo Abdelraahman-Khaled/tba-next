@@ -1,20 +1,21 @@
 import { notFound } from 'next/navigation';
 import { getPartner, getAllPartnerSlugs } from '../../data/partners';
 import PartnerDetailContent from '../../components/Partners/PartnerDetailContent';
-import { cookies } from 'next/headers';
-
 export async function generateStaticParams() {
     const slugs = getAllPartnerSlugs();
-    return slugs.map((slug) => ({
-        partner: slug,
-    }));
+    const locales = ['ar', 'en'];
+
+    return locales.flatMap((lang) =>
+        slugs.map((slug) => ({
+            lang,
+            partner: slug,
+        }))
+    );
 }
 
 export async function generateMetadata({ params }) {
-    const cookieStore = await cookies();
-    const lang = cookieStore.get('language')?.value || 'ar';
-    const resolvedParams = await params;
-    const partner = getPartner(resolvedParams.partner);
+    const { lang, partner: partnerSlug } = await params;
+    const partner = getPartner(partnerSlug);
 
     if (!partner) {
         return {
@@ -31,11 +32,8 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function PartnerPage({ params }) {
-    const cookieStore = await cookies();
-    const lang = cookieStore.get('language')?.value || 'ar';
-
-    const resolvedParams = await params;
-    const partner = getPartner(resolvedParams.partner);
+    const { lang, partner: partnerSlug } = await params;
+    const partner = getPartner(partnerSlug);
 
     if (!partner) {
         notFound();

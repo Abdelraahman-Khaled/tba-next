@@ -1,9 +1,8 @@
 import { cookies } from 'next/headers';
 import AboutPageContent from '../components/About/AboutPageContent';
 
-export async function generateMetadata() {
-    const cookieStore = await cookies();
-    const lang = cookieStore.get('language')?.value || 'ar';
+export async function generateMetadata({ params }) {
+    const { lang } = await params;
     const isArabic = lang === 'ar';
 
     return {
@@ -14,7 +13,7 @@ export async function generateMetadata() {
     };
 }
 
-const AboutPage = () => {
+const AboutPage = async ({ params }) => {
     return <AboutPageContent />;
 };
 

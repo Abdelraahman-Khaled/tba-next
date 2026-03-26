@@ -38,7 +38,7 @@ const SubHero = ({ title, headerSubtitle = subtitle || "", subtitle, bgImage, bg
                     </div>
                 </div>
                 <div className="col-lg-12">
-                    <ol className="breadcrumb">
+                    <ol className="breadcrumb flex-row-reverse">
                         {breadcrumbs ? (
                             breadcrumbs.map((crumb, index) => (
                                 <li
@@ -76,7 +76,7 @@ const SubHero = ({ title, headerSubtitle = subtitle || "", subtitle, bgImage, bg
                                             <li className="breadcrumb-item active" aria-current="page">{subtitle}</li>
                                         )
                                     }
-                                                                    <li className="breadcrumb-item"><Link href={`/${lang}`}>{t.nav.home}</Link></li>
+                                    <li className="breadcrumb-item"><Link href={`/${lang}`}>{t.nav.home}</Link></li>
                                 </>
                             )
                         )}
