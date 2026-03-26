@@ -13,6 +13,13 @@ export default function proxy(request) {
 
   if (pathnameHasLocale) return;
 
+  // Check if it's a partner slug (even if it contains a dot like Mr.Brownie)
+  if (pathname.startsWith('/partners/')) {
+    const locale = request.cookies.get('language')?.value || defaultLocale;
+    request.nextUrl.pathname = `/${locale}${pathname === '/' ? '' : pathname}`;
+    return NextResponse.redirect(request.nextUrl);
+  }
+
   // Handle files like sitemap, robots, images via public folder directly without redirecting
   if (
     pathname.startsWith('/api') ||
