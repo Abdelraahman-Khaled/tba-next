@@ -35,12 +35,6 @@ export default async function sitemap() {
           lastModified: new Date(blog.updated_at || new Date()),
           changeFrequency: "weekly",
           priority: 0.6,
-          alternates: {
-            languages: {
-              ar: `${baseUrl}/ar/blogs/${arSlug}`,
-              en: `${baseUrl}/en/blogs/${enSlug}`,
-            },
-          },
         });
 
         // English Entry
@@ -49,12 +43,6 @@ export default async function sitemap() {
           lastModified: new Date(blog.updated_at || new Date()),
           changeFrequency: "weekly",
           priority: 0.6,
-          alternates: {
-            languages: {
-              ar: `${baseUrl}/ar/blogs/${arSlug}`,
-              en: `${baseUrl}/en/blogs/${enSlug}`,
-            },
-          },
         });
       });
     }
