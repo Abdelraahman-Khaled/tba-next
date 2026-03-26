@@ -1,40 +1,37 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
-const locales = ['ar', 'en'];
-const PUBLIC_PATHS = ['/images', '/css', '/fonts', '/js', '/Barcode', '/_next', '/api'];
-const PUBLIC_FILES = ['/favicon.ico', '/robots.txt', '/sitemap.xml', '/sitemap.js', '/globals.css'];
+const locales = ["ar", "en"];
 
 export function middleware(request) {
-    const { pathname } = request.nextUrl;
+  const { pathname } = request.nextUrl;
 
-    // 1. Skip if it's a known public path or file
-    if (
-        PUBLIC_PATHS.some(path => pathname.startsWith(path)) ||
-        PUBLIC_FILES.includes(pathname)
-    ) {
-        return NextResponse.next();
-    }
+  // 1. تحقق إذا كان المسار يحتوي بالفعل على اللغة في بدايته
+  const pathnameHasLocale = locales.some(
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
+  );
 
-    // 2. Check if the pathname already has a locale
-    const pathnameHasLocale = locales.some(
-        (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-    );
+  if (pathnameHasLocale) return NextResponse.next();
 
-    if (pathnameHasLocale) return NextResponse.next();
+  // 2. الحصول على اللغة من الكوكيز أو المتصفح، والافتراضي 'ar'
+  const cookieLang = request.cookies.get("language")?.value || "ar";
+  const locale = locales.includes(cookieLang) ? cookieLang : "ar";
 
-    // 3. Get language from cookie or default to 'ar'
-    const cookieLang = request.cookies.get('language')?.value || 'ar';
-    
-    // 4. Redirect to the localized path
-    const url = request.nextUrl.clone();
-    url.pathname = `/${cookieLang}${pathname === '/' ? '' : pathname}`;
-    
-    return NextResponse.redirect(url);
+  // 3. إعادة التوجيه مع إضافة اللغة
+  const url = request.nextUrl.clone();
+  url.pathname = `/${locale}${pathname}`;
+
+  return NextResponse.redirect(url);
 }
 
 export const config = {
-    matcher: [
-        // Match all paths except those starting with api, _next/static, _next/image, or featuring a known file extension in public
-        '/((?!api|_next/static|_next/image|favicon.ico).*)',
-    ],
+  matcher: [
+    /*
+     * استثناء المسارات التي لا يجب أن يطبق عليها الـ Middleware:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico, images, fonts (assets)
+     */
+    "/((?!api|_next/static|_next/image|images|fonts|css|js|Barcode|favicon.ico|robots.txt|sitemap.xml).*)",
+  ],
 };
