@@ -52,7 +52,7 @@ const SubHero = ({ title, headerSubtitle = subtitle || "", subtitle, bgImage, bg
                         ) : (
                             !isRTL ? (
                                 <div className="d-flex" dir='ltr'>
-                                    <li className="breadcrumb-item"><Link href="/">{t.nav.home}</Link></li>
+                                    <li className="breadcrumb-item"><Link href={`/${lang}`}>{t.nav.home}</Link></li>
                                     {
                                         details ? (
                                             <>
@@ -76,7 +76,7 @@ const SubHero = ({ title, headerSubtitle = subtitle || "", subtitle, bgImage, bg
                                             <li className="breadcrumb-item active" aria-current="page">{subtitle}</li>
                                         )
                                     }
-                                    <li className="breadcrumb-item"><Link href="/">{t.nav.home}</Link></li>
+                                                                    <li className="breadcrumb-item"><Link href={`/${lang}`}>{t.nav.home}</Link></li>
                                 </>
                             )
                         )}

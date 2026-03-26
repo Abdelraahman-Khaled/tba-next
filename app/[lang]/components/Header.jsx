@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 import { useLanguage } from '../context/LanguageContext';
 
@@ -13,6 +13,7 @@ const Header = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+    const router = useRouter();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -32,7 +33,8 @@ const Header = () => {
     }, []);
 
     const isActive = (path) => {
-        return pathname === path || (path !== '/' && pathname.startsWith(path));
+        const langPath = `/${lang}${path === '/' ? '' : path}`;
+        return pathname === langPath || (path !== '/' && pathname.startsWith(langPath));
     };
 
     const toggleDropdown = () => {
@@ -45,7 +47,21 @@ const Header = () => {
 
     const handleSwitchLang = (e) => {
         e.preventDefault();
-        setLanguage(isArabic ? 'en' : 'ar');
+        const newLang = isArabic ? 'en' : 'ar';
+        setLanguage(newLang);
+        
+        let newPathname = pathname;
+        if (pathname.startsWith('/ar/')) {
+            newPathname = pathname.replace('/ar/', '/');
+        } else if (pathname === '/ar') {
+            newPathname = '/';
+        } else if (pathname.startsWith('/en/')) {
+            newPathname = pathname.replace('/en/', '/');
+        } else if (pathname === '/en') {
+            newPathname = '/';
+        }
+        
+        router.push(`/${newLang}${newPathname === '/' ? '' : newPathname}`);
     };
 
     return (
@@ -55,7 +71,7 @@ const Header = () => {
                     <div className="row">
                         <div className="col-12">
                             <nav className="navbar navbar-expand-md navbar-light">
-                                <Link className="navbar-brand" href="/">
+                                <Link className="navbar-brand" href={`/${lang}`}>
                                     <img src="/images/logo-2.webp" alt="قمة الماركات العربية للتجارة (TBA)" />
                                 </Link>
 
@@ -73,10 +89,10 @@ const Header = () => {
                                 <div className={`collapse navbar-collapse ${isNavbarOpen ? 'show' : ''}`} id="navbarSupportedContent">
                                     <ul className={`navbar-nav ${isArabic ? 'me-auto' : 'ms-auto'} py-4 py-md-0`}>
                                         <li className={`nav-item ps-4 ps-md-0 ms-0 ms-md-4 ${isActive('/') ? 'active-link' : ''}`}>
-                                            <Link className="nav-link" href="/">{t.nav.home}</Link>
+                                            <Link className="nav-link" href={`/${lang}`}>{t.nav.home}</Link>
                                         </li>
                                         <li className={`nav-item ps-4 ps-md-0 ms-0 ms-md-4 ${isActive('/about') ? 'active-link' : ''}`}>
-                                            <Link className="nav-link" href="/about">{t.nav.about}</Link>
+                                            <Link className="nav-link" href={`/${lang}/about`}>{t.nav.about}</Link>
                                         </li>
                                         <li className={`nav-item dropdown ps-4 ps-md-0 ms-0 ms-md-4 ${isActive('/partners') ? 'active-link' : ''}`}>
                                             <a
@@ -93,46 +109,46 @@ const Header = () => {
                                                 {t.nav.partners}
                                             </a>
                                             <div className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}>
-                                                <Link className={`dropdown-item ${isActive('/partners/EL-SABOR') ? 'active' : ''}`} href="/partners/EL-SABOR" onClick={closeDropdown}>
+                                                <Link className={`dropdown-item ${isActive('/partners/EL-SABOR') ? 'active' : ''}`} href={`/${lang}/partners/EL-SABOR`} onClick={closeDropdown}>
                                                     {isArabic ? 'إل سابور' : 'El Sabor'}
                                                 </Link>
-                                                <Link className={`dropdown-item ${isActive('/partners/Franui') ? 'active' : ''}`} href="/partners/Franui" onClick={closeDropdown}>
+                                                <Link className={`dropdown-item ${isActive('/partners/Franui') ? 'active' : ''}`} href={`/${lang}/partners/Franui`} onClick={closeDropdown}>
                                                     {isArabic ? 'فرانوي' : 'Franui'}
                                                 </Link>
-                                                <Link className={`dropdown-item ${isActive('/partners/Legend') ? 'active' : ''}`} href="/partners/Legend" onClick={closeDropdown}>
+                                                <Link className={`dropdown-item ${isActive('/partners/Legend') ? 'active' : ''}`} href={`/${lang}/partners/Legend`} onClick={closeDropdown}>
                                                     {isArabic ? 'نجوين ليجند' : 'Legend'}
                                                 </Link>
-                                                <Link className={`dropdown-item ${isActive('/partners/littel-donkey') ? 'active' : ''}`} href="/partners/littel-donkey" onClick={closeDropdown}>
+                                                <Link className={`dropdown-item ${isActive('/partners/littel-donkey') ? 'active' : ''}`} href={`/${lang}/partners/littel-donkey`} onClick={closeDropdown}>
                                                     Little Donkey
                                                 </Link>
-                                                <Link className={`dropdown-item ${isActive('/partners/Marshzone') ? 'active' : ''}`} href="/partners/Marshzone" onClick={closeDropdown}>
+                                                <Link className={`dropdown-item ${isActive('/partners/Marshzone') ? 'active' : ''}`} href={`/${lang}/partners/Marshzone`} onClick={closeDropdown}>
                                                     {isArabic ? 'مارشزون' : 'Marshzone'}
                                                 </Link>
-                                                <Link className={`dropdown-item ${isActive('/partners/Mr.Brownie') ? 'active' : ''}`} href="/partners/Mr.Brownie" onClick={closeDropdown}>
+                                                <Link className={`dropdown-item ${isActive('/partners/Mr.Brownie') ? 'active' : ''}`} href={`/${lang}/partners/Mr.Brownie`} onClick={closeDropdown}>
                                                     {isArabic ? 'مستر براوني' : 'Mr Brownie'}
                                                 </Link>
-                                                <Link className={`dropdown-item ${isActive('/partners/Sweet-Pistachio') ? 'active' : ''}`} href="/partners/Sweet-Pistachio" onClick={closeDropdown}>
+                                                <Link className={`dropdown-item ${isActive('/partners/Sweet-Pistachio') ? 'active' : ''}`} href={`/${lang}/partners/Sweet-Pistachio`} onClick={closeDropdown}>
                                                     {isArabic ? 'سويت بستاشيو' : 'Sweet Pistachio'}
                                                 </Link>
-                                                <Link className={`dropdown-item ${isActive('/partners/Vicenzi') ? 'active' : ''}`} href="/partners/Vicenzi" onClick={closeDropdown}>
+                                                <Link className={`dropdown-item ${isActive('/partners/Vicenzi') ? 'active' : ''}`} href={`/${lang}/partners/Vicenzi`} onClick={closeDropdown}>
                                                     Matilde Vicenzi
                                                 </Link>
-                                                <Link className={`dropdown-item ${isActive('/partners/Trolli') ? 'active' : ''}`} href="/partners/Trolli" onClick={closeDropdown}>
+                                                <Link className={`dropdown-item ${isActive('/partners/Trolli') ? 'active' : ''}`} href={`/${lang}/partners/Trolli`} onClick={closeDropdown}>
                                                     Trolli
                                                 </Link>
                                             </div>
                                         </li>
                                         <li className={`nav-item ps-4 ps-md-0 ms-0 ms-md-4 ${isActive('/products') ? 'active-link' : ''}`}>
-                                            <Link className="nav-link" href="/products">{t.nav.products}</Link>
+                                            <Link className="nav-link" href={`/${lang}/products`}>{t.nav.products}</Link>
                                         </li>
                                         <li className={`nav-item ps-4 ps-md-0 ms-0 ms-md-4 ${isActive('/blogs') ? 'active-link' : ''}`}>
-                                            <Link className="nav-link" href="/blogs">{t.nav.blogs}</Link>
+                                            <Link className="nav-link" href={`/${lang}/blogs`}>{t.nav.blogs}</Link>
                                         </li>
                                         <li className={`nav-item ps-4 ps-md-0 ms-0 ms-md-4 ${isActive('/faqs') ? 'active-link' : ''}`}>
-                                            <Link className="nav-link" href="/faqs">{t.nav.faqs}</Link>
+                                            <Link className="nav-link" href={`/${lang}/faqs`}>{t.nav.faqs}</Link>
                                         </li>
                                         <li className={`nav-item ps-4 ps-md-0 ms-0 ms-md-4 ${isActive('/contact') ? 'active-link' : ''}`}>
-                                            <Link className="nav-link" href="/contact">{t.nav.contact}</Link>
+                                            <Link className="nav-link" href={`/${lang}/contact`}>{t.nav.contact}</Link>
                                         </li>
                                         <li className="nav-item ps-4 ps-md-0 ms-0 ms-md-4">
                                             <a className="nav-link" href="#" onClick={handleSwitchLang}>

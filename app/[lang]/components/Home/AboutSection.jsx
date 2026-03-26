@@ -40,7 +40,7 @@ const AboutSection = ({ t, lang }) => {
                         <h1 dangerouslySetInnerHTML={{ __html: t.about.title }}></h1>
                         <div className="spacer-half"></div>
                         <p className="lead" dangerouslySetInnerHTML={{ __html: t.about.description }}></p>
-                        <Link href="/about" className="btn-line">
+                        <Link href={`/${lang}/about`} className="btn-line">
                             {t.about.readMore}
                         </Link>
                     </div>

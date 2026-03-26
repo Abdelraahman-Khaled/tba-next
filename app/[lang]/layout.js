@@ -6,7 +6,7 @@ import {
   Marcellus,
 } from "next/font/google"; // Import fonts
 import Script from "next/script";
-import "./globals.css";
+import "../globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { LanguageProvider } from "./context/LanguageContext";
@@ -42,9 +42,8 @@ const marcellus = Marcellus({
   variable: "--font-marcellus",
 });
 
-export async function generateMetadata() {
-  const cookieStore = await cookies();
-  const lang = cookieStore.get("language")?.value || "ar";
+export async function generateMetadata({ params }) {
+  const { lang } = await params;
   const isArabic = lang === "ar";
 
   const metadata = {
@@ -64,7 +63,7 @@ export async function generateMetadata() {
         ? "TBA شركة سعودية متخصصة في استيراد وتوزيع المواد الغذائية الفاخرة. استيراد مواد غذائية، مورد مواد غذائية، موزع مواد غذائية، مستودع مواد غذائية، شركات استيراد المواد الغذائية."
         : "TBA is a Saudi company importing premium food products from the world's finest brands. Explore luxurious global flavors and place your order now for unmatched quality!",
       images: ["https://tba.sa/images/logo-2.webp"],
-      url: isArabic ? "https://tba.sa/" : "https://tba.sa/en/",
+      url: isArabic ? "https://tba.sa/ar/" : "https://tba.sa/en/",
       type: "website",
     },
     twitter: {
@@ -85,16 +84,16 @@ export async function generateMetadata() {
   return metadata;
 }
 
-export default async function RootLayout({ children }) {
-  const cookieStore = await cookies();
-  const initialLang = cookieStore.get("language")?.value || "ar";
+export default async function RootLayout({ children, params }) {
+  const { lang } = await params;
+  const initialLang = lang || "ar";
 
   const isRTL = initialLang === "ar";
 
   return (
     <html
       lang={initialLang}
-      dir={initialLang === "ar" ? "ltr" : "rtl"}
+      dir={initialLang === "ar" ? "rtl" : "ltr"}
       suppressHydrationWarning
       style={{ overflow: "unset !important" }}
     >
@@ -132,7 +131,7 @@ export default async function RootLayout({ children }) {
               alternateName: isRTL
                 ? "Tob Brands Arabian Trading Co"
                 : "شركة قمة الماركات العربية للتجارة",
-              url: isRTL ? "https://tba.sa/" : "https://tba.sa/en/",
+              url: isRTL ? "https://tba.sa/ar/" : "https://tba.sa/en/",
               logo: "https://tba.sa/images/logo-2.webp",
               description: isRTL
                 ? "شركة سعودية متخصصة في استيراد وتوزيع المواد الغذائية الفاخرة من أشهر العلامات التجارية العالمية."

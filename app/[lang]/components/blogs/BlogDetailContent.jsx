@@ -1,7 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { getBlogDetails } from '../../api/blog';
+import { getBlogDetails } from '../../../api/blog';
 import SubHero from '../SubHero';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState, useRef } from 'react';
@@ -78,7 +78,7 @@ const BlogDetailContent = ({ blog: initialBlog, isRTL, slug, t }) => {
                                                 dangerouslySetInnerHTML={{ __html: sectionContent }}
                                             />
                                             {item.photos && item.photos.length > 0 && (
-                                                <div className="row g-4 mt-4 justify-content-end">
+                                                <div className="row g-4 mt-4 justify-content-start ">
                                                     {item.photos.map((photo) => (
                                                         <div className="col-12 col-md-6">
                                                             <div className="post-image rounded-3 overflow-hidden shadow-sm">

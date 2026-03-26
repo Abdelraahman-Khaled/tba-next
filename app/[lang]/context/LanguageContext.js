@@ -16,7 +16,7 @@ export const LanguageProvider = ({ children, initialLang = "ar" }) => {
 
   const updateDocumentAttributes = (newLang) => {
     if (typeof document !== "undefined") {
-      document.documentElement.dir = newLang === "ar" ? "ltr" : "rtl";
+      document.documentElement.dir = newLang === "ar" ? "rtl" : "ltr";
       document.documentElement.lang = newLang;
     }
   };
@@ -37,16 +37,9 @@ export const LanguageProvider = ({ children, initialLang = "ar" }) => {
   );
 
   useEffect(() => {
-    // Load language from localStorage if available (sync client-side)
-    const savedLang = localStorage.getItem("language");
-    if (savedLang && savedLang !== lang) {
-      setLanguage(savedLang);
-    } else {
-      // Ensure document attributes are set on initial load
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      updateDocumentAttributes(lang);
-    }
-  }, [lang, setLanguage]);
+    // Ensure document attributes are set on initial load
+    updateDocumentAttributes(lang);
+  }, [lang]);
 
   return (
     <LanguageContext.Provider value={{ lang, t, setLanguage }}>

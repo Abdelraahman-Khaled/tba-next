@@ -7,7 +7,7 @@ import History from './History';
 import CTA from '../CTA';
 import Testimonials from '../Testimonials';
 import SubHero from '../SubHero';
-import { useLanguage } from '@/app/context/LanguageContext';
+import { useLanguage } from '../../context/LanguageContext';
 
 const AboutPageContent = () => {
     const { t, lang } = useLanguage();

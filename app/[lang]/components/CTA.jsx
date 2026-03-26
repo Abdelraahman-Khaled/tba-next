@@ -11,7 +11,7 @@ const CTA = ({ t, lang }) => {
                         <h2 dir={isRTL ? 'rtl' : 'ltr'}>
                             {t.aboutPage.cta.title}
                         </h2>
-                        <Link href="/contact" className="btn-line">{t.aboutPage.cta.button}</Link>
+                        <Link href={`/${lang}/contact`} className="btn-line">{t.aboutPage.cta.button}</Link>
                     </div>
                 </div>
             </div>

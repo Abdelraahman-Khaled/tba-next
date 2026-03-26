@@ -1,11 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
-import { getBlogs } from '../../api/blog';
+import { getBlogs } from '../../../api/blog';
 
 const BlogsSection = ({ t, lang }) => {
     const isRTL = lang === 'ar';
-    const basePath = lang === 'en' ? '/en' : '';
+    const basePath = `/${lang}`;
 
     const { data: blogs } = useQuery({
         queryKey: ['blogs'],

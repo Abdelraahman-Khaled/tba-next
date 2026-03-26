@@ -37,7 +37,7 @@ const History = ({ t, lang }) => {
 
                             <div className="about-us-footer">
                                 <div className="about-btn">
-                                    <Link href="/contact" className="btn-default">{t.nav.contact}</Link>
+                                    <Link href={`/${lang}/contact`} className="btn-default">{t.nav.contact}</Link>
                                 </div>
                             </div>
                         </div>

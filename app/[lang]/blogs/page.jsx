@@ -5,7 +5,7 @@ import SubHero from '../components/SubHero';
 import Link from 'next/link';
 import { useLanguage } from '../context/LanguageContext';
 import { useQuery } from '@tanstack/react-query';
-import { getBlogs } from '../api/blog';
+import { getBlogs } from '../../api/blog';
 
 const BlogsPage = () => {
     const { t, lang } = useLanguage();
@@ -80,14 +80,14 @@ const BlogsPage = () => {
                                                     <div className="post-content">
                                                         <div className="post-text">
                                                             <h3 dir={isRTL ? 'rtl' : 'ltr'}>
-                                                                <Link href={`/blogs/${blog.slug}`}>
+                                                                <Link href={`/${lang}/blogs/${blog.slug}`}>
                                                                     {title}
                                                                 </Link>
                                                             </h3>
                                                             <p dir={isRTL ? 'rtl' : 'ltr'}>
                                                                 {description}
                                                             </p>
-                                                            <Link href={`/blogs/${blog.slug}`} className="btn-line">
+                                                            <Link href={`/${lang}/blogs/${blog.slug}`} className="btn-line">
                                                                 {t.blogs.readMore}
                                                             </Link>
                                                         </div>
@@ -106,14 +106,14 @@ const BlogsPage = () => {
                                                     <div className="post-content">
                                                         <div className="post-text">
                                                             <h3 dir={isRTL ? 'rtl' : 'ltr'}>
-                                                                <Link href={`/blogs/${blog.slug}`}>
+                                                                <Link href={`/${lang}/blogs/${blog.slug}`}>
                                                                     {title}
                                                                 </Link>
                                                             </h3>
                                                             <p dir={isRTL ? 'rtl' : 'ltr'}>
                                                                 {description}
                                                             </p>
-                                                            <Link href={`/blogs/${blog.slug}`} className="btn-line">
+                                                            <Link href={`/${lang}/blogs/${blog.slug}`} className="btn-line">
                                                                 {t.blogs.readMore}
                                                             </Link>
                                                         </div>
