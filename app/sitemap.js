@@ -22,6 +22,7 @@ export default async function sitemap() {
   }));
 
   const blogRoutes = [];
+
   try {
     const blogs = await getBlogs();
     if (Array.isArray(blogs)) {
@@ -50,12 +51,20 @@ export default async function sitemap() {
     console.error("Error fetching blogs for sitemap:", error);
   }
 
-  const partnerRoutes = Object.values(partners).map((partner) => ({
-    url: `${baseUrl}/partners/${partner.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
+  const partnerRoutes = Object.values(partners).flatMap((partner) => [
+    {
+      url: `${baseUrl}/ar/partners/${partner.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/en/partners/${partner.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+  ]);
 
   return [...staticRoutes, ...blogRoutes, ...partnerRoutes];
 }
