@@ -14,12 +14,20 @@ export default async function sitemap() {
     "/products",
     "/faqs",
     "/blogs",
-  ].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: route === "" ? 1 : 0.8,
-  }));
+  ].flatMap((route) => [
+    {
+      url: `${baseUrl}/ar${route}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: route === "" ? 1 : 0.8,
+    },
+    {
+      url: `${baseUrl}/en${route}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: route === "" ? 0.9 : 0.7,
+    },
+  ]);
 
   const blogRoutes = [];
 
