@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
         const blog = await getBlogDetails(slug);
 
         const arSlug = blog.slug_ar || blog.slug;
-        const enSlug = blog.slug_en || blog.slug;
+        const enSlug = blog.slug || blog.slug_ar;
 
         return {
             title: isRTL ? blog.meta_title_ar : blog.meta_title_en,

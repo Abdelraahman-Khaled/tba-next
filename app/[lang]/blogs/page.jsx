@@ -67,7 +67,7 @@ const BlogsPage = () => {
                             {[...blogs].reverse()?.map((blog, index) => {
                                 const title = isRTL ? blog.title_ar : blog.title_en;
                                 const description = isRTL ? blog.description_ar : blog.description_en;
-
+                                const slug = isRTL ? blog.slug_ar : blog.slug;
                                 // Find image based on language
                                 const langPhoto = blog.photos?.find(p => p.is_arabic === isRTL);
                                 const imageUrl = langPhoto?.url || blog.photos?.[0]?.url || '/images/blogpage.webp';
@@ -80,14 +80,14 @@ const BlogsPage = () => {
                                                     <div className="post-content">
                                                         <div className="post-text">
                                                             <h3 dir={isRTL ? 'rtl' : 'ltr'}>
-                                                                <Link href={`/${lang}/blogs/${blog.slug}`}>
+                                                                <Link href={`/${lang}/blogs/${slug}`}>
                                                                     {title}
                                                                 </Link>
                                                             </h3>
                                                             <p dir={isRTL ? 'rtl' : 'ltr'}>
                                                                 {description}
                                                             </p>
-                                                            <Link href={`/${lang}/blogs/${blog.slug}`} className="btn-line">
+                                                            <Link href={`/${lang}/blogs/${slug}`} className="btn-line">
                                                                 {t.blogs.readMore}
                                                             </Link>
                                                         </div>
@@ -106,14 +106,14 @@ const BlogsPage = () => {
                                                     <div className="post-content">
                                                         <div className="post-text">
                                                             <h3 dir={isRTL ? 'rtl' : 'ltr'}>
-                                                                <Link href={`/${lang}/blogs/${blog.slug}`}>
+                                                                <Link href={`/${lang}/blogs/${slug}`}>
                                                                     {title}
                                                                 </Link>
                                                             </h3>
                                                             <p dir={isRTL ? 'rtl' : 'ltr'}>
                                                                 {description}
                                                             </p>
-                                                            <Link href={`/${lang}/blogs/${blog.slug}`} className="btn-line">
+                                                            <Link href={`/${lang}/blogs/${slug}`} className="btn-line">
                                                                 {t.blogs.readMore}
                                                             </Link>
                                                         </div>
