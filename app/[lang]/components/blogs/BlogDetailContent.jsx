@@ -76,17 +76,20 @@ const BlogDetailContent = ({ blog: initialBlog, isRTL, slug, t }) => {
 
     return (
         <div id="content" className={`no-bottom no-top ${isRTL ? 'text-end' : ''}`}>
-            {faqSchemaEn && (
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchemaEn) }}
-                />
-            )}
-            {faqSchemaAr && (
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchemaAr) }}
-                />
+            {isRTL ? (
+                faqSchemaAr && (
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchemaAr) }}
+                    />
+                )
+            ) : (
+                faqSchemaEn && (
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchemaEn) }}
+                    />
+                )
             )}
             <SubHero
                 title={title}
