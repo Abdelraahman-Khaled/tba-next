@@ -35,6 +35,32 @@ const BlogDetailContent = ({ blog: initialBlog, isRTL, slug, t }) => {
     const [activeAccordion, setActiveAccordion] = useState(null);
     const isInitialized = useRef(false);
 
+    const faqSchemaEn = blog?.faqs?.length > 0 ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": blog.faqs.map(faq => ({
+            "@type": "Question",
+            "name": faq.question_en || faq.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer_en || faq.answer
+            }
+        }))
+    } : null;
+
+    const faqSchemaAr = blog?.faqs?.length > 0 ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": blog.faqs.map(faq => ({
+            "@type": "Question",
+            "name": faq.question_ar || faq.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer_ar || faq.answer
+            }
+        }))
+    } : null;
+
     // Set initial active accordion when blog data loads
     useEffect(() => {
         if (!isInitialized.current && blog?.faqs?.length > 0) {
@@ -50,6 +76,18 @@ const BlogDetailContent = ({ blog: initialBlog, isRTL, slug, t }) => {
 
     return (
         <div id="content" className={`no-bottom no-top ${isRTL ? 'text-end' : ''}`}>
+            {faqSchemaEn && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchemaEn) }}
+                />
+            )}
+            {faqSchemaAr && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchemaAr) }}
+                />
+            )}
             <SubHero
                 title={title}
                 headerSubtitle={t.blogs.headerSubtitle}
