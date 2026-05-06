@@ -6,7 +6,7 @@ import SubHero from '../SubHero';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState, useRef } from 'react';
 
-const BlogDetailContent = ({ blog: initialBlog, isRTL, slug, t }) => {
+const BlogDetailContent = ({ blog: initialBlog, isRTL, slug, t, lang }) => {
     const router = useRouter();
     const { data: blog } = useQuery({
         queryKey: ['blog', slug],
@@ -20,7 +20,7 @@ const BlogDetailContent = ({ blog: initialBlog, isRTL, slug, t }) => {
 
         const correctSlug = isRTL ? blog.slug_ar : blog.slug;
         if (correctSlug && correctSlug !== slug) {
-            router.replace(`/blogs/${correctSlug}`, { scroll: false });
+            router.replace(`/${lang}/blogs/${correctSlug}`, { scroll: false });
         }
     }, [isRTL, blog, slug, router]);
 
@@ -99,7 +99,7 @@ const BlogDetailContent = ({ blog: initialBlog, isRTL, slug, t }) => {
                 bgImageAlt={imageAlt}
                 details={{
                     label: title,
-                    link: `/blogs`
+                    link: `/${lang}/blogs`
                 }}
             />
 

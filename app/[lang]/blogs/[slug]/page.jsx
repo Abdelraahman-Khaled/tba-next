@@ -70,7 +70,7 @@ const BlogDetailPage = async ({ params }) => {
     }
 
     return (
-        <BlogDetailContent blog={blog} isRTL={isRTL} slug={slug} t={t} />
+        <BlogDetailContent blog={blog} isRTL={isRTL} slug={slug} t={t} lang={lang} />
     );
 };
 

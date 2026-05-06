@@ -1,5 +1,4 @@
 import React from 'react';
-import { cookies } from 'next/headers';
 import ContactPageContent from '../components/Contact/ContactPageContent';
 import enTranslations from '../i18n/locales/en.json';
 import arTranslations from '../i18n/locales/ar.json';

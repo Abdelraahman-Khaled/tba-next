@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { cookies } from 'next/headers';
 import SubHero from '../components/SubHero';
 import ProductCard from '../components/Products/ProductCard';
@@ -69,7 +70,7 @@ const ProductsPage = async () => {
                                 <h2 dir={isRTL ? 'rtl' : 'ltr'} className="mb-4">
                                     {data.cta.title[lang]}
                                 </h2>
-                                <a href={data.cta.link} className="btn-line">{data.cta.button[lang]}</a>
+                                <Link href={data.cta.link[lang]} className="btn-line">{data.cta.button[lang]}</Link>
                             </div>
                         </div>
                     </div>

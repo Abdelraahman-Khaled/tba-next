@@ -335,6 +335,9 @@ export const productsPageData = {
             ar: "تواصل معنا الان",
             en: "contact us now"
         },
-        link: "/contact"
+        link: {
+            ar: "/ar/contact",
+            en: "/en/contact"
+        }
     }
 };
