@@ -12,7 +12,7 @@ const AboutSection = ({ t, lang }) => {
                             <div className="col-6">
                                 <div style={{ padding: '177.78% 0 0 0', position: 'relative' }}>
                                     <iframe
-                                        src="https://player.vimeo.com/video/1110685156?background=1&autoplay=1&loop=1&muted=1"
+                                        src="https://player.vimeo.com/video/1110685156?autoplay=1&loop=1&muted=1&controls=0&autopause=0&badge=0&title=0&byline=0&portrait=0"
                                         frameBorder="0"
                                         allow="autoplay; fullscreen"
                                         referrerPolicy="strict-origin-when-cross-origin"
@@ -24,7 +24,7 @@ const AboutSection = ({ t, lang }) => {
                             <div className="col-6 text-end">
                                 <div style={{ padding: '177.78% 0 0 0', position: 'relative' }}>
                                     <iframe
-                                        src="https://player.vimeo.com/video/1110684673?background=1&autoplay=1&loop=1&muted=1"
+                                        src="https://player.vimeo.com/video/1110684673?autoplay=1&loop=1&muted=1&controls=0&autopause=0&badge=0&title=0&byline=0&portrait=0"
                                         frameBorder="0"
                                         allow="autoplay; fullscreen"
                                         referrerPolicy="strict-origin-when-cross-origin"
