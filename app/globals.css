@@ -166,12 +166,14 @@ h5.uptitle,
 
 
 .blog-content-rich ul,
+.blog-content-rich ol,
 .faq-section ul {
   color: white !important;
   padding: 0px 2rem;
 }
 
 .blog-content-rich ul li,
+.blog-content-rich ol li,
 .faq-section ul li {
   margin-bottom: 1rem;
 }
