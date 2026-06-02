@@ -98,7 +98,6 @@ export default async function RootLayout({ children, params }) {
       style={{ overflow: "unset !important" }}
     >
       <head>
-        <link rel="icon" href="/images/logo.ico" type="image/x-icon" />
         <link rel="stylesheet" href="/css/style.min.css" />
 
         {/* Google Tag Manager */}
