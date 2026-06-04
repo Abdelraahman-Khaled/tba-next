@@ -217,7 +217,6 @@ export default async function RootLayout({ children, params }) {
           src="https://player.vimeo.com/api/player.js"
           strategy="lazyOnload"
         />
-
       </body>
     </html>
   );
