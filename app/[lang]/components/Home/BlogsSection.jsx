@@ -1,15 +1,20 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
 import { getBlogs } from '../../../api/blog';
 
-const BlogsSection = ({ t, lang }) => {
+const BlogsSection = ({ t, lang, initialBlogs }) => {
     const isRTL = lang === 'ar';
     const basePath = `/${lang}`;
 
+    // initialData comes from the server render so the blog links are present
+    // in the HTML for crawlers.
     const { data: blogs } = useQuery({
         queryKey: ['blogs'],
         queryFn: getBlogs,
+        initialData: initialBlogs,
         staleTime: 5 * 60 * 1000, // 5 minutes
     });
 

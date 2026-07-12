@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import HomeHero from './components/Home/HomeHero';
 import AboutSection from './components/Home/AboutSection';
@@ -14,10 +12,20 @@ import CTASection from './components/Home/CTASection';
 import WhyUsSection from './components/Home/WhyUsSection';
 import ReviewsSection from './components/Home/ReviewsSection';
 import BlogsSection from './components/Home/BlogsSection';
-import { useLanguage } from './context/LanguageContext';
+import arTranslations from './i18n/locales/ar.json';
+import enTranslations from './i18n/locales/en.json';
+import { getBlogs } from '../api/blog';
 
-export default function HomePage() {
-    const { t, lang } = useLanguage();
+export default async function HomePage({ params }) {
+    const { lang } = await params;
+    const t = lang === 'ar' ? arTranslations : enTranslations;
+
+    let blogs = [];
+    try {
+        blogs = await getBlogs();
+    } catch (error) {
+        console.error('Error fetching blogs:', error);
+    }
 
     return (
         <>
@@ -35,7 +43,7 @@ export default function HomePage() {
                     <CTASection t={t} lang={lang} />
                     <WhyUsSection t={t} lang={lang} />
                     <ReviewsSection t={t} lang={lang} />
-                    <BlogsSection t={t} lang={lang} />
+                    <BlogsSection t={t} lang={lang} initialBlogs={blogs} />
                 </div>
             </div>
         </>
