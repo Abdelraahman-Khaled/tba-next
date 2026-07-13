@@ -2,12 +2,12 @@
 export const productsPageData = {
     seo: {
         ar: {
-            title: "TBA - المنتجات والخدمات",
-            description: "موزع مواد غذائية TBA منتجات متنوعة شركات استيراد المواد الغذائية التوصيل والتوزيع الاستيراد والتوريد الطلبات المخصصة حلويات قهوة ألعاب بسكويت مواد غذائية بالجملة"
+            title: "تصفح أفضل منتجات شركة قمة الماركات العربية للتجارة",
+            description: "اكتشف أفضل منتجات شركة قمة الماركات العربية للتجارة، وتعرّف على حلولنا المتنوعة في مجال التجارة والاستيراد بما يلبي احتياجاتك بأعلى معايير الجودة"
         },
         en: {
-            title: "TBA - Products & Services",
-            description: "Discover TBA's premium food products & services - luxury gourmet imports, exclusive distribution & customized solutions for businesses. Experience exceptional quality & taste. Contact us today!"
+            title: "Browse the best products from TBA",
+            description: "Discover the best products from TBA, and learn about our diverse solutions in the field of trade and import that meet your needs with the highest quality"
         }
     },
     hero: {

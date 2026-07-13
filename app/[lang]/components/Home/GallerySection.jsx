@@ -1,47 +1,10 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
+import Lightbox from '../Lightbox';
 
 const GallerySection = ({ t, lang }) => {
     const isRTL = lang === 'ar';
-
-    useEffect(() => {
-        // Reinitialize magnificPopup after component mounts
-        if (typeof window !== 'undefined' && window.jQuery) {
-            const $ = window.jQuery;
-            if ($.fn.magnificPopup) {
-                const initPopup = () => {
-                    $('.zoom-gallery').magnificPopup({
-                        delegate: 'a',
-                        type: 'image',
-                        closeOnContentClick: false,
-                        closeBtnInside: false,
-                        mainClass: 'mfp-with-zoom mfp-img-mobile',
-                        image: {
-                            verticalFit: true,
-                            titleSrc: function (item) {
-                                return item.el.attr('title') || t.gallery.title;
-                            }
-                        },
-                        gallery: {
-                            enabled: true
-                        },
-                        zoom: {
-                            enabled: true,
-                            duration: 300,
-                            opener: function (element) {
-                                return element.find('img');
-                            }
-                        }
-                    });
-                };
-
-                // Small delay to ensure DOM is ready
-                const timer = setTimeout(initPopup, 100);
-                return () => clearTimeout(timer);
-            }
-        }
-    }, [lang]);
 
     const galleryImages = [
         { id: 1, src: '/images/misc/gallery-1.webp', hasZoom: true },
@@ -55,6 +18,25 @@ const GallerySection = ({ t, lang }) => {
         { id: 8, src: '/images/misc/gallery-8.webp', hasZoom: true },
     ];
 
+    // Only zoomable images take part in the lightbox / navigation.
+    const zoomImages = galleryImages.filter((image) => image.hasZoom);
+    const lightboxImages = zoomImages.map((image) => ({
+        src: image.src,
+        alt: `Gallery ${image.id}`,
+        title: t.gallery.title,
+    }));
+
+    const [lightboxIndex, setLightboxIndex] = useState(null);
+
+    const openLightbox = (id) => {
+        const idx = zoomImages.findIndex((image) => image.id === id);
+        if (idx !== -1) setLightboxIndex(idx);
+    };
+    const closeLightbox = () => setLightboxIndex(null);
+    const showPrev = () =>
+        setLightboxIndex((i) => (i - 1 + zoomImages.length) % zoomImages.length);
+    const showNext = () =>
+        setLightboxIndex((i) => (i + 1) % zoomImages.length);
 
     return (
         <section aria-label="section">
@@ -70,12 +52,18 @@ const GallerySection = ({ t, lang }) => {
                         </div>
                     </div>
                 </div>
-                <div id="gallery" className="row g-4 zoom-gallery">
+                <div id="gallery" className="row g-4">
                     {galleryImages.map((image) => (
                         <div className="col-lg-4 item" key={image.id}>
                             <figure className={image.hasZoom ? 'hover-zoom position-relative overflow-hidden' : 'overflow-hidden'}>
                                 {image.hasZoom ? (
-                                    <a href={image.src}>
+                                    <a
+                                        href={image.src}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            openLightbox(image.id);
+                                        }}
+                                    >
                                         <span className="d-hover">
                                             <span className="d-text">
                                                 <span className="d-cap">{t.gallery.view}</span>
@@ -91,6 +79,15 @@ const GallerySection = ({ t, lang }) => {
                     ))}
                 </div>
             </div>
+
+            <Lightbox
+                images={lightboxImages}
+                index={lightboxIndex}
+                onClose={closeLightbox}
+                onPrev={showPrev}
+                onNext={showNext}
+                isRTL={isRTL}
+            />
         </section>
     );
 };

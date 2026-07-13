@@ -40,7 +40,8 @@ const BlogsSection = ({ t, lang, initialBlogs }) => {
                             const excerpt = isRTL ? blog.description_ar : blog.description_en; // Using description as excerpt for now
                             const langPhoto = blog.photos?.find(p => p.is_arabic === isRTL);
                             const imageUrl = langPhoto?.url || blog.photos?.[0]?.url || '/images/blogpage.webp';
-                            const slideUrl = `${basePath}/blogs/${blog.slug}`;
+                            const slug = isRTL ? blog.slug_ar : blog.slug;
+                            const slideUrl = `${basePath}/blogs/${slug}`;
 
                             return (
                                 <div className="blog-item row align-items-center g-3 gx-5" key={blog.slug}>
@@ -95,6 +96,11 @@ const BlogsSection = ({ t, lang, initialBlogs }) => {
                             );
                         })}
                     </div>
+                </div>
+                <div className="text-center mt-5">
+                    <Link href={`${basePath}/blogs`} className="btn-line">
+                        {isRTL ? 'عرض كل المقالات' : 'View All Blogs'}
+                    </Link>
                 </div>
             </div>
         </section>

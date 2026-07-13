@@ -19,6 +19,9 @@
             type: 'image',
             closeOnContentClick: false,
             closeBtnInside: false,
+            // Never lock <html> scroll: the plugin's teardown that releases the lock
+            // can be skipped if an earlier step throws, leaving the page unscrollable.
+            fixedContentPos: false,
             mainClass: 'mfp-with-zoom mfp-img-mobile',
             image: {
                 verticalFit: true,
@@ -35,6 +38,14 @@
                 duration: 300, // don't foget to change the duration also in CSS
                 opener: function (element) {
                     return element.find('img');
+                }
+            },
+            callbacks: {
+                // Safety net: strip any residual overlay / scroll-lock styles on close.
+                afterClose: function () {
+                    jQuery('html, body').css({ overflow: '', 'margin-right': '' });
+                    jQuery('html').removeClass('mfp-zoom-out-cur mfp-ready mfp-removing');
+                    jQuery('.mfp-bg, .mfp-wrap').remove();
                 }
             }
         });

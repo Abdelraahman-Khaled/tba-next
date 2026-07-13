@@ -172,8 +172,14 @@
   },
   "faqsPage": {
     "seo": {
-      "title": "FAQs - Top Brands Arabian Trading Co.",
-      "description": "Find answers to common questions about Top Brands Arabian Trading Co., our products, distribution services, and more."
+      "title": "FAQ about the most important methods of trading products",
+      "description": "Find answers to the most frequently asked questions about the products of TBA, the steps of trade and import, methods of ordering and communicating"
+    }
+  },
+  "blogsPage": {
+    "seo": {
+      "title": "Browse the latest news and information about the products",
+      "description": "Follow the latest news from TBA, and learn about our products related to trade and import, while knowing the ways to communicate with us easily."
     }
   },
   "contactPage": {
