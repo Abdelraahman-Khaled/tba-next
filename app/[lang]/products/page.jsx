@@ -5,9 +5,8 @@ import SubHero from '../components/SubHero';
 import ProductCard from '../components/Products/ProductCard';
 import { productsPageData } from '../data/products';
 
-export async function generateMetadata() {
-    const cookieStore = await cookies();
-    const lang = cookieStore.get('language')?.value || 'ar';
+export async function generateMetadata({ params }) {
+    const { lang } = await params;
     const seo = productsPageData.seo[lang] || productsPageData.seo['ar'];
 
     return {
