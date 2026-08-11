@@ -5,6 +5,7 @@ import { getBlogDetails } from '../../../api/blog';
 import SubHero from '../SubHero';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState, useRef } from 'react';
+import { formatContent } from '../../utils/youtube';
 
 const BlogDetailContent = ({ blog: initialBlog, isRTL, slug, t, lang }) => {
     const router = useRouter();
@@ -116,7 +117,7 @@ const BlogDetailContent = ({ blog: initialBlog, isRTL, slug, t, lang }) => {
                                             <div
                                                 className="post-text blog-content-rich"
                                                 dir={isRTL ? 'rtl' : 'ltr'}
-                                                dangerouslySetInnerHTML={{ __html: sectionContent }}
+                                                dangerouslySetInnerHTML={{ __html: formatContent(sectionContent) }}
                                             />
                                             {item.photos && item.photos.length > 0 && (
                                                 <div className="row g-4 mt-4 justify-content-start ">
@@ -171,7 +172,7 @@ const BlogDetailContent = ({ blog: initialBlog, isRTL, slug, t, lang }) => {
                                                             <div className="accordion-body">
                                                                 <div
                                                                     className="text-white mb-0"
-                                                                    dangerouslySetInnerHTML={{ __html: answer }}
+                                                                    dangerouslySetInnerHTML={{ __html: formatContent(answer) }}
                                                                     dir={isRTL ? 'rtl' : 'ltr'}
                                                                 />
                                                             </div>
