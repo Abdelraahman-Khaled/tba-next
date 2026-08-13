@@ -5,7 +5,7 @@ import { getBlogDetails } from '../../../api/blog';
 import SubHero from '../SubHero';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState, useRef } from 'react';
-import { formatContent } from '../../utils/youtube';
+import { formatContent } from '../../utils/videoEmbeds';
 
 const BlogDetailContent = ({ blog: initialBlog, isRTL, slug, t, lang }) => {
     const router = useRouter();

@@ -189,12 +189,19 @@ h5.uptitle,
   overflow: hidden;
 }
 
-.video-responsive.video-short {
+.video-responsive.video-short,
+.video-responsive.video-tiktok {
   padding-top: 0;
   aspect-ratio: 9 / 16;
   max-width: 360px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* TikTok's player needs a little extra height for its caption/controls bar. */
+.video-responsive.video-tiktok {
+  aspect-ratio: 9 / 16.6;
+  max-width: 340px;
 }
 
 .video-responsive iframe {
